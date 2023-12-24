@@ -23,17 +23,24 @@ const BackAccount = class{
 // instance using this we use extends and className
 // eg:- extends BankAccount line number 25 => BackAccount all property 
 // are available in CurrentAccount
-class CurrentAccount extends BackAccount{
-    transactionLimit = 50000;
+const BackAccount = class{
+    customerName; 
+    Accountnumber;
+    balance = 0;
 
     constructor(customerName, balance = 0){
-        super(customerName,balance) // super method call firt super coustructor this 
-                            //code super constructor is line number 7
+        this.customerName = customerName;
+        this.Accountnumber = Date.now()
+        this.balance = balance
     }
 
-    takingBusinessLoan(amount){
-    console.log('Taking Business loan: ' + amount)
-}
+    deposit(amount){
+        this.balance += amount
+    }
+
+    withdraw(amount){
+        this.balance -= amount
+    }
 }
 
 
