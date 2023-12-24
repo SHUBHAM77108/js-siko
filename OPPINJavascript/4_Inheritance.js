@@ -1,29 +1,29 @@
 
-const BackAccount = class{
-    customerName; 
-    Accountnumber;
-    balance = 0;
+// const BankAccount = class{
+//     customerName; 
+//     Accountnumber;
+//     balance = 0;
 
-    constructor(customerName, balance = 0){
-        this.customerName = customerName;
-        this.Accountnumber = Date.now()
-        this.balance = balance
-    }
+//     constructor(customerName, balance = 0){
+//         this.customerName = customerName;
+//         this.Accountnumber = Date.now()
+//         this.balance = balance
+//     }
 
-    deposit(amount){
-        this.balance += amount
-    }
+//     deposit(amount){
+//         this.balance += amount
+//     }
 
-    withdraw(amount){
-        this.balance -= amount
-    }
-}
+//     withdraw(amount){
+//         this.balance -= amount
+//     }
+// }
 
 // Inside this class constructor not using this because syntax is defferent 
 // instance using this we use extends and className
-// eg:- extends BankAccount line number 25 => BackAccount all property 
+// eg:- extends BankAccount line number 25 => BankAccount all property 
 // are available in CurrentAccount
-const BackAccount = class{
+const BankAccount = class{
     customerName; 
     Accountnumber;
     balance = 0;
@@ -44,7 +44,7 @@ const BackAccount = class{
 }
 
 
-class SavingAccount extends BackAccount{
+class SavingAccount extends BankAccount{
     transactionLimit = 10000;
 
     constructor(customerName, balance = 0){
@@ -123,7 +123,7 @@ console.log(ShubhamAccount)
 
 // // this is a example of do not repeat yourself
 // function CurrentAccount(CustomerName, balance = 0){
-// //(constructor linking) link parent to child constructor (BackAccount)
+// //(constructor linking) link parent to child constructor (BankAccount)
 //     BankAccount.call(this, CustomerName, balance);//thisIsconstructorLinking
 //     this.transactionLimit = 50000
 // }
@@ -152,7 +152,7 @@ console.log(ShubhamAccount)
 // ShubhamAccount.takingPersonalLoan(4000)
 // // console.log(ShubhamAccount)
 
-// // const ShubhamAccount = new BackAccount("Shubham",1000)
+// // const ShubhamAccount = new BankAccount("Shubham",1000)
 // // ShubhamAccount.deposit(4000)
 // // ShubhamAccount.withdraw(300)
 // // console.log(ShubhamAccount)
