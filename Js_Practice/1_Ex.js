@@ -25,3 +25,21 @@ extension of a filename.
 const getFileExtension = (str) => str.slice(str.lastIndexOf('.'));
 
 console.log(getFileExtension('index.html'));
+
+const fruits = ['apple', 'kiwi','mango','pear']
+
+function appendIndex (fruit, index){
+    console.log(`${index}. ${fruit}`)
+}
+fruits.forEach(appendIndex)
+
+const veggies = ['onion', 'garlic', 'potato']
+
+veggies.forEach( function(veggie, index){
+    console.log(`${index}. ${veggie}`)
+})
+
+const nums = [0,10,20,30,40,50];
+nums.filter( function(num){
+    return num > 20;
+})
