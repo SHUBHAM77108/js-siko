@@ -91,13 +91,19 @@
 // console.log(stringAlphaBeticalOrder("apple"))
 // console.log(stringAlphaBeticalOrder("shubham"))
 
+// =========================================
+
 // Q9- Write a JavaScript function that accepts a string as a parameter and converts the first letter of each word of the string in upper case
 
-function strConvertToUpperCase(str){
-    var allwords = str.split(" ").map(function(word){
-        return word.charAt(0).toUpperCase() + word.substring(1)
-    })
-    console.log(allwords)
-}
+// function strConvertToUpperCase(str){
+//     var allwords = str.split(" ").map(function(word){
+//         return word.charAt(0).toUpperCase() + word.substring(1)
+//     })
+//     console.log(allwords)
+// }
 
-strConvertToUpperCase("aur shubham bhai kya chal raha hai")
+// strConvertToUpperCase("aur shubham bhai kya chal raha hai")
+
+// -========================================-
+
+// Q11 - Write a JavaScript function to get the number of occurrences of each letter in specified string 
