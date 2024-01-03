@@ -105,6 +105,22 @@ function strConvertToUpperCase(str){
 // strConvertToUpperCase("aur shubham bhai kya chal raha hai")
 
 // -========================================-
+// Q10 - Write a JavaScript function which accepts an argument and return the type 
+// Note : There are six possible values that typeof return : object, boolean, function, number, string, and undefined
+
+function typeTeller(elem){
+    return typeof elem;
+}
+
+// console.log(typeTeller()) // undefined
+// console.log(typeTeller(undefined)) // undefined
+// console.log(typeTeller([])) // object
+// console.log(typeTeller(12)) // number
+// console.log(typeTeller("12")) // string
+// console.log(typeTeller(true)) // boolean
+// console.log(typeTeller(function () {})) // function
+
+// -========================================-
 
 // Q11 - Write a JavaScript function to get the number of occurrences of each letter in specified string 
 
@@ -188,3 +204,83 @@ function occ(str){
 // }
 
 // console.log(arr)
+
+
+// -=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=
+
+// Array  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+// --------------------------------------------------------
+
+// // Write a JavaScript function to clone an array
+
+// this  is using spread 
+// function cloneArr(arr){
+//     return [...arr]
+// }
+
+// var newarr = cloneArr([1, 2, 3, 4]);
+
+// console.log(newarr)
+
+// Using map 
+function cloneArr(arr){
+    return arr.map(function(e){
+        return e;
+    })
+}
+
+// console.log(cloneArr([1, 2, 3, 4]))
+
+// function cloneArr(arr){
+//     var newarr = [];
+//     arr.forEach(function (elem) {
+//         newarr.push(elem)
+//     })
+//     return newarr
+// }
+
+// var abcd = [1,2,3]
+
+// var newarr = cloneArr(abcd)
+
+// -======================================-
+
+// Write a JavaScript function to get the first element of an Array. Passing a parameter 'n' will return the first 'n' element of the array
+
+function retrieve(arr, n = 1){
+    if(n <= arr.length){
+    for(let i = 0; i <= n; i++){
+        console.log(arr[a])
+    }
+} else{
+    console.log(n + "to element he nahi hai")
+}
+}
+
+// retrieve([1, 2, 3, 4, 5], 4)
+// -======================================-
+
+// Write a JavaScript function to get the last element of an array. passing a parameter 'n' will return the last 'n' elements of the array.
+
+function retrieve(arr, n = 1){
+    if(n <= arr.length){
+    for(let i = 0; i < n; i++){
+        console.log(arr[arr.length - 1 - i])
+    }
+} else{
+    console.log(n + "to element he nahi hai")
+}
+}
+
+retrieve([1, 2, 3, 4, 5], 3)
+
+// -======================================-
+
+// Write a JavaScript program to find the most frequent item of an array 
+
+function freq(arr){{
+
+}}
+
+freq[(1, 2, 3, 12, 2, 3, 12, 1, 2, 3, 2121]);
