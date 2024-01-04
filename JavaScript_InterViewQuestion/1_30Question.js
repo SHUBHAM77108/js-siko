@@ -273,14 +273,22 @@ function retrieve(arr, n = 1){
 }
 }
 
-retrieve([1, 2, 3, 4, 5], 3)
+// retrieve([1, 2, 3, 4, 5], 3)
 
 // -======================================-
 
 // Write a JavaScript program to find the most frequent item of an array 
 
 function freq(arr){{
-
+    var freq = {}
+    arr.forEach(function(elem){
+        if (freq.hasOwnProperty(elem)) freq[elem]++;
+        else freq[elem] = 1;
+    })
+    var ans = Object.keys(freq).reduce(function(acc, next){
+        return freq[acc] > freq[next] ? acc : next;
+    })
+    console.log(ans)
 }}
 
-// freq[(1, 2, 3, 12, 2, 3, 12, 1, 2, 3, 2121]);
+freq([1, 2,4, 3, 12, 2, 3, 12,4, 1, 2, 3,4, 2121]);
