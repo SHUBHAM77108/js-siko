@@ -291,4 +291,33 @@ function freq(arr){{
     console.log(ans)
 }}
 
-freq([1, 2,4, 3, 12, 2, 3, 12,4, 1, 2, 3,4, 2121]);
+// freq([1, 2,4, 3, 12, 2, 3, 12,4, 1, 2, 3,4, 2121]);
+
+// Write a JavaScript program to shuffle an array 
+
+function shuffleKaro(arr){
+    // sabse pahle kitna area shuffle area hai
+    var totalShuffleArea = arr.length;
+    // ek random number nikaalo
+    while (totalShuffleArea > 0){
+        totalShuffleArea--;
+        var indexToBeExchanged = Math.floor(Math.random()*totalShuffleArea);
+        var temp = arr[totalShuffleArea];
+        arr[totalShuffleArea] = arr[indexToBeExchanged]
+        arr[indexToBeExchanged] = temp;
+    }
+    return arr;
+}
+
+console.log(shuffleKaro([1, 2, 3, 4, 5, 6, 7]))
+
+// Write a JavaScript program to compute the union of two arrays
+// Sample Data: 
+// console.log(union([1, 2, 3], [100, 2, 1, 10]))
+// [1, 2, 3, 10, 100]
+
+function union(arr1, arr2){
+    return [...new Set(arr1.concat(arr2))]
+}
+
+console.log(union([1, 2, 3, 4], [2, 3, 4, 6]))
