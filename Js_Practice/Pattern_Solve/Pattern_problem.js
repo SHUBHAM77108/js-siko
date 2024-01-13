@@ -78,13 +78,118 @@
 // 12
 // 1
 
-let n = 4; 
-let string = ""
+// let n = 4; 
+// let string = ""
 
-for(let i = 1; i <= n; i++){
-    for(let j = 1; j <= n+1-i; j++){
-        string += j
+// for(let i = 1; i <= n; i++){
+//     for(let j = 1; j <= n+1-i; j++){
+//         string += j
+//     }
+//     string += "\n"
+// }
+// console.log(string);
+
+// 7 Pattern
+
+// 1
+// 13
+// 135
+// 1357
+
+// let n = 4; 
+// let string = ""
+
+// for(let i = 1; i <= n; i++){
+//     let a = 1
+//     for(let j = 1; j <= i; j++){
+//         string += a
+//         a = a + 2
+//     }
+//     string += "\n"
+// }
+// console.log(string);
+
+// 8 Pattern
+
+// A B C D
+// A B C D
+// A B C D
+// A B C D
+
+// let n = 4;
+// let string = ""
+// for(let i = 1; i <= n; i++){
+//     let a = 1;
+//     for(let j = 1; j <= n; j++){
+//         let d = a + 64
+//         string += String.fromCharCode(d) + " "
+//         a++;
+//     }
+//     string += "\n"
+// }
+
+// console.log(string)
+
+
+// 9 Pattern
+
+// A 
+// A B 
+// A B C 
+// A B C D
+
+// let n = 4;
+// let string = ""
+// for(let i = 1; i <= n; i++){
+//     let a = 1;
+//     for(let j = 1; j <= i; j++){
+//         let d = a + 64
+//         string += String.fromCharCode(d) + " "
+//         a++;
+//     }
+//     string += "\n"
+// }
+
+// console.log(string)
+
+// 10 Pattern 
+
+// let n = 4;
+// let string = ""
+// for(let i = 1; i <= n; i++){
+//     let a = 1;
+//     for(let j = 1; j <= i; j++){
+//         let d = a + 64
+//         string += String.fromCharCode(d) + " "
+//         a++;
+//     }
+//     string += "\n"
+// }
+
+// console.log(string)
+
+// 11 Pattern 
+
+// 1
+// A B
+// 1 2 3
+// A B C D
+// 1 2 3 4 5
+
+let n = 5
+let string = ""
+for (let i = 1; i <= n; i++){
+    let a = 1;
+    for(let j = 1; j <= i; j++){
+        let d = a + 64;
+        a++
+        if (j % 2 == 0){
+            string += String.fromCharCode(d)
+        } else {
+            string += j
+        } 
     }
+    
     string += "\n"
 }
-console.log(string);
+console.log(string)
