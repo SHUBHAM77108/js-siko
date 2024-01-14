@@ -176,20 +176,43 @@
 // A B C D
 // 1 2 3 4 5
 
-let n = 5
+// let n = 5
+// let string = ""
+// for (let i = 1; i <= n; i++){
+//     let a = 1;
+//     for(let j = 1; j <= i; j++){
+//         let d = a + 64;
+//         if (i % 2 == 0){
+//             string += String.fromCharCode(d)
+//         } else {
+//             string += j
+//         }
+//         a++
+//     }
+//     string += "\n"
+// }
+// console.log(string)
+
+// 12 Pattern 
+
+// # # * # #
+// # # * # #
+// * * * * * 
+// # # * # #
+// # # * # #
+
+let n = 5;
 let string = ""
-for (let i = 1; i <= n; i++){
-    let a = 1;
-    for(let j = 1; j <= i; j++){
-        let d = a + 64;
-        a++
-        if (j % 2 == 0){
-            string += String.fromCharCode(d)
+
+for(let i = 1; i <= n; i++){
+    for(let j = 1; j <= n; j++){
+        // let a = n/2 + 1
+        if (j == n/2 +1 || i == n/2 +1){
+            string += "*"
         } else {
-            string += j
-        } 
+            string += "/"
+        }
     }
-    
-    string += "\n"
+        string += "\n"
 }
 console.log(string)
