@@ -77,13 +77,46 @@
 
 // console.log(sum(5,6));
 
-function sum (...numbers){
-    console.log(numbers);
-    let result = 0;
-    for(let num of numbers){
-        result += num;
-    }
-    return result;
-}
 
-console.log(sum(5,9));
+// // -- e.g:- 1
+// function sum (...numbers){
+//     console.log(numbers);
+//     let result = 0;
+//     for(let num of numbers){
+//         result += num;
+//     }
+//     return result;
+// }
+
+// const numbers = [3, 4, 5, 10, 12, 13]; // pack 
+
+// console.log(sum(...numbers)); // numbers is unpack inside this perameter
+
+// // -- e.g:- 2
+
+// function sum (number1, number2,...numbers){
+//     console.log(numbers);
+//     let result = 0;
+//     for(let num of numbers){
+//         result += num;
+//     }
+//     return result;
+// }
+
+// console.log(sum(3, 4, 5, 6));
+
+// // -- e.g:- 3
+
+// const numbersFromBackend = [2, 3, 4, 1, 2, 51, 6, 3, 5];
+// console.log(Math.max(...numbersFromBackend)); // find max value inside the numbersFromBackend variable
+
+// --- disructuring 
+
+// const user = {
+//     name:'shubham',
+//     city:'mumbai',
+//     street:'main-street'
+// };
+
+// const {name, ...address} = user;
+// console.log(name, address);
