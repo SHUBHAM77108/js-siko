@@ -40,10 +40,19 @@ const studentsMarks = [
     }
     return data
   }
+  function getStudentsAbove445(StudentData){
+    for(let i = 0; i < StudentData.length; i++){
+      if (totalmarks[i] > 445){
+        
+      }
+    }
+  }
 
   function getStudentReport(getstudentsMarks){
     let totalmarksEachStudent = getTotalmarksEachStudent(getstudentsMarks)
+    let studentAbove445 = getStudentsAbove445(getstudentsMarks)
     let report = totalmarksEachStudent
+    report += studentAbove445
     return report
   }
 
