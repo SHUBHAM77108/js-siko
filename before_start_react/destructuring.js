@@ -204,7 +204,7 @@ the spread syntax ' ... '
 // Destructuring Function Arguments
 // Here's how you destructure the arguments:
 
-let displayFullName = ({firstName, lastName}) => `${firstName} ${lastName}`;
+let displayFullName =   ({firstName, lastName}) => `${firstName} ${lastName}`;
     let person = {
     firstName: 'shubham',
     tastName: 'Vish'
