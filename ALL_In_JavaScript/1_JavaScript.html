@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Quantity</title>
+</head>
+<body>
+    <button onclick="console.log(`Cart Quality: ${cartQuality}`)" style="background-color: rebeccapurple; margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">Show Quantity</button>
+    <button onclick=" 
+    cartQuality = cartQuality + 1;
+    console.log(`Cart Quality: ${cartQuality}`
+    )" 
+    style="background-color: rgb(15, 240, 15); margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">Add to Cart</button>
+    <button onclick=" 
+    cartQuality = cartQuality + AddtoCartPlusTwo;
+    console.log(`Cart Quality: ${cartQuality}`
+    )"  style="background-color: greenyellow; margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">+2</button>
+    <button onclick=" 
+    cartQuality = cartQuality + AddtoCartPlusThree;
+    console.log(`Cart Quality: ${cartQuality}`
+    )" style="background-color: greenyellow; margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">+3</button>
+    <button onclick=" 
+    cartQuality += 4;
+    console.log(`Cart Quality: ${cartQuality}`
+    )" style="background-color: greenyellow; margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">+4</button>
+    <button onclick=" 
+    cartQuality += 5;
+    console.log(`Cart Quality: ${cartQuality}`
+    )" style="background-color: greenyellow; margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">+5</button>
+    <button onclick=" 
+    cartQuality -= 1;
+    console.log(`Cart Quality: ${cartQuality}`
+    )" style="background-color: rgb(249, 80, 80); margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">Remove from Cart</button>
+    <button onclick=" 
+    cartQuality -= 2;
+    console.log(`Cart Quality: ${cartQuality}`
+    )" style="background-color: rgb(249, 80, 80); margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">-2</button>
+    <button onclick=" 
+    cartQuality -= 3;
+    console.log(`Cart Quality: ${cartQuality}`
+    )" style="background-color: rgb(249, 80, 80); margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">-3</button>
+    <button onclick=" 
+    cartQuality = resetCart;
+    console.log('Cart was reset.')
+    console.log(`Cart Quality: ${cartQuality}`
+    )" style="background-color: red; margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">Resert Cart</button>
+
+    <div style="background-color: aliceblue; border-radius: 15px; width: 30%; height: 20%; display: flex; align-items: center; justify-content: center; gap: 2px; flex-direction: column;">
+        <p>
+            <button onclick="
+            calculation += '1';
+            console.log(calculation);
+            " style="padding: 12px 16px; border-radius: 5px; border: 2px solid #cfcfcf73;">1</button>
+            <button onclick="
+            calculation += '2';
+            console.log(calculation);
+            " style="padding: 12px 16px; border-radius: 5px; border: 2px solid #cfcfcf73;">2</button>
+            <button onclick="
+            calculation += '3';
+            console.log(calculation);
+            " style="padding: 12px 16px; border-radius: 5px; border: 2px solid #cfcfcf73;">3</button>
+            <button onclick="
+            calculation += ' + ';
+            console.log(calculation);
+            " style="padding: 12px 16px; border-radius: 5px; border: 2px solid #cfcfcf73;">+</button>
+        </p>
+        <p>
+            <button onclick="
+            calculation += '4';
+            console.log(calculation);
+            " style="padding: 12px 16px; border-radius: 5px; border: 2px solid #cfcfcf73;">4</button>
+            <button onclick="
+            calculation += '5';
+            console.log(calculation);
+            " style="padding: 12px 16px; border-radius: 5px; border: 2px solid #cfcfcf73;">5</button>
+            <button onclick="
+            calculation += '6';
+            console.log(calculation);
+            " style="padding: 12px 16px; border-radius: 5px; border: 2px solid #cfcfcf73;">6</button>
+            <button onclick="
+            calculation += ' - ';
+            console.log(calculation);
+            " style="padding: 12px 16px; border-radius: 5px; border: 2px solid #cfcfcf73;">-</button>
+        </p>
+        <p>
+            <button onclick="
+            calculation += '7';
+            console.log(calculation);
+            " style="padding: 12px 16px; border-radius: 5px; border: 2px solid #cfcfcf73;">7</button>
+            <button onclick="
+            calculation += '8';
+            console.log(calculation);
+            " style="padding: 12px 16px; border-radius: 5px; border: 2px solid #cfcfcf73;">8</button>
+            <button onclick="
+            calculation += '9';
+            console.log(calculation);
+            " style="padding: 12px 16px; border-radius: 5px; border: 2px solid #cfcfcf73;">9</button>
+            <button onclick="
+            calculation += ' * ';
+            console.log(calculation);
+            " style="padding: 12px 16px; border-radius: 5px; border: 2px solid #cfcfcf73;">*</button>
+        </p>
+        <p>
+            <button onclick="
+            calculation += '0';
+            console.log(calculation);
+            " style="padding: 12px 16px; border-radius: 5px; border: 2px solid #cfcfcf73;">0</button>
+            <button onclick="
+            calculation += ' . ';
+            console.log(calculation);
+            " style="padding: 12px 16px; border-radius: 5px; border: 2px solid #cfcfcf73;">.</button>
+            <button onclick="
+            calculation = eval(calculation);
+            console.log(calculation);
+            " style="padding: 12px 16px; border-radius: 5px; border: 2px solid #cfcfcf73;">=</button>
+            <button onclick="
+            calculation += ' / ';
+            console.log(calculation);
+            " style="padding: 12px 16px; border-radius: 5px; border: 2px solid #cfcfcf73;">/</button>
+        </p>
+        <button onclick="
+        calculation = 0;
+        console.log('clear');
+        console.log(calculation);
+        " style="padding: 12px 16px; border-radius: 5px; border: 2px solid #cfcfcf73;">CE</button>
+    </div>
+</body>
+<script>
+    let cartQuality = 0;
+    let AddtoCartPlusTwo = 2;
+    let AddtoCartPlusThree = 3;
+    let resetCart = 0;
+
+    // Pratince Sets 
+    let name = "Shu";
+    console.log(name);
+
+    let coffee = 5;
+    let coffeeQuantity = 1;
+    let bagels = 3;
+    let bagelsQuantity = 2;
+    let soup = 9;
+    let soupQuantity = 1;
+
+    let cost = (coffee * coffeeQuantity) + (bagels * bagelsQuantity) + (soup * soupQuantity);
+    console.log(`Cost of food:$${cost}`);
+
+    let restaurantChargesTax = 10;
+    let totalCost = cost + (cost * 10 / 100);
+    console.log(`Total Cost of food after tax:$${totalCost}`);
+
+    let calculation = '';
+</script>
+</html>
