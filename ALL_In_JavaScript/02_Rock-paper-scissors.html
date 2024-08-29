@@ -87,6 +87,59 @@
     
 </body>
 <script>
+    // pratice of boolean and if-statements
+    let hour = 15;
+    let name = 'shubham';
+    // if (hour >= 6 && hour <= 12) {
+    //     console.log(`Good morning!${name}`);
+    // } else if (hour >= 13 && hour <= 17) {
+    //     console.log(`Good Afternoon!${name}`);
+    // } else {
+    //     console.log(`Good Night!${name}`);
+    // }
+    // convert in Ternary operators
+    console.log(
+        hour >= 6 && hour <= 12 
+        ? `Good morning! ${name}` 
+        : hour >= 13 && hour <= 17 
+        ? `Good Afternoon! ${name}` 
+        : `Good Night! ${name}`
+    );
 
+    let age = 16;
+    let isHoliday = true;
+    // if ((age >= 6  || age <= 60) && !isHoliday) {
+    //     console.log('Discount');
+    // } else {
+    //     console.log('No Discount');
+    // }
+
+    // convert in Ternary operators
+    console.log((age >= 6  || age <= 60) && !isHoliday ? 'Discount Bhai' : 'No Discount Bhai');
+
+    const randomNumber4 = Math.random();
+    let result4 = '';
+    let guess = '';
+    // if(randomNumber4 < 1 / 2) {
+    //     console.log(randomNumber4);
+    //     result4 = 'Heads';
+    // } else {
+    //     console.log(randomNumber4);
+    //     result4 = 'Tails';
+    // }
+
+    // convert in Ternary operators
+    result4 = (randomNumber4 < 1 / 2) ? 'Heads bhai' : 'Tails bhai';
+
+    // if(result4 === 'Heads') {
+    //     guess = 'You win.'
+    // } else {
+    //     guess = 'You loss.'
+    // }
+    // convert in Ternary operators
+    guess = (result4 === 'Heads') ? 'You Win Bhai.' : 'You loss Bhai.';
+
+
+    console.log(`${result4}. You Guess Heads. ${guess}`);
 </script>
 </html>

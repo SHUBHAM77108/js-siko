@@ -8,36 +8,71 @@
 <body>
     <button onclick="console.log(`Cart Quality: ${cartQuality}`)" style="background-color: rebeccapurple; margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">Show Quantity</button>
     <button onclick=" 
-    cartQuality = cartQuality + 1;
+    if (cartQuality >= 0 && cartQuality <= 9) {
+        cartQuality = cartQuality + 1;
+    } else {
+        alert('The Cart is full');
+    }
     console.log(`Cart Quality: ${cartQuality}`
     )" 
     style="background-color: rgb(15, 240, 15); margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">Add to Cart</button>
     <button onclick=" 
-    cartQuality = cartQuality + AddtoCartPlusTwo;
+    if (cartQuality >= 0 && cartQuality <= 9) {
+        cartQuality = cartQuality + AddtoCartPlusTwo;
+    } else {
+        alert('The Cart is full');
+    }
     console.log(`Cart Quality: ${cartQuality}`
-    )"  style="background-color: greenyellow; margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">+2</button>
+    )" 
+    style="background-color: greenyellow; margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">+2</button>
     <button onclick=" 
-    cartQuality = cartQuality + AddtoCartPlusThree;
+        if (cartQuality >= 0 && cartQuality <= 9) {
+        cartQuality = cartQuality + AddtoCartPlusThree;
+    } else {
+        alert('The Cart is full');
+    }
     console.log(`Cart Quality: ${cartQuality}`
+    )" 
     )" style="background-color: greenyellow; margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">+3</button>
     <button onclick=" 
-    cartQuality += 4;
+    if (cartQuality >= 0 && cartQuality <= 9) {
+        cartQuality = cartQuality + 4;
+    } else {
+        alert('The Cart is full');
+    }
     console.log(`Cart Quality: ${cartQuality}`
     )" style="background-color: greenyellow; margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">+4</button>
     <button onclick=" 
-    cartQuality += 5;
+    if (cartQuality >= 0 && cartQuality <= 9) {
+        cartQuality = cartQuality + 5;
+    } else {
+        alert('The Cart is full');
+    }
     console.log(`Cart Quality: ${cartQuality}`
-    )" style="background-color: greenyellow; margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">+5</button>
+    )" 
+    style="background-color: greenyellow; margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">+5</button>
     <button onclick=" 
-    cartQuality -= 1;
+    if (cartQuality >= 1) {
+        cartQuality -= 1;
+    } else {
+        alert('Not enough items in the cart');
+    }
     console.log(`Cart Quality: ${cartQuality}`
     )" style="background-color: rgb(249, 80, 80); margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">Remove from Cart</button>
     <button onclick=" 
-    cartQuality -= 2;
+    if (cartQuality >= 1) {
+        cartQuality -= 2;
+    } else {
+        alert('Not enough items in the cart');
+    }
     console.log(`Cart Quality: ${cartQuality}`
     )" style="background-color: rgb(249, 80, 80); margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">-2</button>
     <button onclick=" 
-    cartQuality -= 3;
+    if (cartQuality >= 1) {
+        cartQuality -= 3;
+    } else {
+        alert('Not enough items in the cart');
+    }
     console.log(`Cart Quality: ${cartQuality}`
     )" style="background-color: rgb(249, 80, 80); margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">-3</button>
     <button onclick=" 
