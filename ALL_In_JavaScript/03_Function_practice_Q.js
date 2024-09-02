@@ -231,11 +231,11 @@
 // }
 
 // console.log(isLastCharacterB("SubhamB"));
-// console.log('16 >-------------------');
 
 
 // Here are more similar questions focusing on creating one function and using it in another:
 
+// console.log('16 >-------------------');
 // 16 >---Questions
 // Write a function named getMiddleCharacter that takes a string as an argument and returns the middle character of the string. If the string has an even number of characters, return the two middle characters. Then, write another function named isMiddleCharacterVowel that uses getMiddleCharacter to check if the middle character(s) is a vowel (a, e, i, o, u).
 
@@ -270,3 +270,73 @@ function isMiddleCharacterVowel (str) {
 } 
 
 console.log(isMiddleCharacterVowel('hamivoishu'));
+
+console.log('17 >-------------------');
+// 17 >---Questions
+// Write a function named getInitials that takes a full name (first and last name) as an argument and returns the initials (e.g., "John Doe" should return "JD"). Then, write another function named compareInitials that takes two full names, calls getInitials for both, and returns true if the initials are the same, and false otherwise.
+function getInitials (firstName, lastName) {
+    (firstName.charAt(0) , lastName.charAt(0));
+    return; 
+}
+function compareInitials () {
+    let firstName = getInitials(firstName);
+    let lastName = getInitials(lastName);
+    if (getInitials(firstName) === firstName.charAt(0) && getInitials(firstName) === lastName.charAt(0)) {
+        return true;
+    } else {
+        return false;
+    }
+    compareInitials();
+}
+// console.log(compareInitials('shubham', 'vish'));
+
+console.log('18 >-------------------');
+// 18 >---Questions
+// Write a function named reverseString that takes a string as an argument and returns the string in reverse order. Then, write another function named isPalindrome that uses reverseString to check if a string is a palindrome (a word that reads the same backward as forward).
+
+function reverseString (revStr) {
+    let countStr = '';
+    for (let i = revStr.length; i > 0; i--) {
+        countStr += revStr.charAt(i - 1);
+    }
+    return countStr;
+}
+
+function isPalindrome (revStr) {
+    let isPalindromResult = "";
+    let storeReverseString = reverseString(revStr);
+    if (storeReverseString === revStr) {
+        isPalindromResult += revStr;
+    } else {
+        return `${storeReverseString} is not a palindrome`;
+    }
+    return `${isPalindromResult} is palindrom`;
+}
+
+console.log(isPalindrome('racecar'));
+
+console.log('19 >-------------------');
+// 19 >---Questions
+//Write a function named getDayOfWeek that takes a date string (e.g., "2023-08-15") as an argument and returns the day of the week (e.g., "Tuesday"). Then, write another function named isWeekend that uses getDayOfWeek to check if the day is Saturday or Sunday.
+
+function getDayOfWeek(dateStr) {
+   let date = new Date(dateStr); // converting string in a date in number
+   let dateInNum = date.getDay(); // this is providing a num from 0 - 6
+   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; // for get a days for this array of index it's picking a days using dateInNum value from 0-6
+   return days[dateInNum]; // geting index of days using value of dateInNum
+}
+
+function isWeekend (dateStr) {
+    return getDayOfWeek(dateStr) === "Saturday" || getDayOfWeek(dateStr) === "Sunday" ? "True" : "False";
+}
+console.log(isWeekend("2024-09-03"));  // Output: "Sunday"
+
+console.log('20 >-------------------');
+// 20 >---Questions
+// Write a function named formatPhoneNumber that takes a string of 10 digits and returns it formatted as "(xxx) xxx-xxxx". Then, write another function named isSameAreaCode that takes two phone numbers, uses formatPhoneNumber for both, and checks if they have the same area code (the first three digits).
+
+function formatPhoneNumber (takePhoneNum) {
+    for (let i = 0; i < takePhoneNum.length; i++) {
+         
+    }
+}
