@@ -79,6 +79,210 @@
     console.log(convertLength(5, 'km', 'ft'))
     
     console.log(convertLength(5, 'lbs', 'lbs'))
+
+
+    // Ek function ko dusre function ke andar kai tarikon se execute kiya ja sakta hai. Tum ek function ko direct call kar sakte ho, ya ek function ko dusre function ke return statement ke andar ya kisi calculation ke liye bhi use kar sakte ho.
+
+// Example 1: Ek parameter wala function
+function multiplyByTwo(num) {
+    return num * 2;  // Ek parameter 'num' ko double kar raha hai
+}
+
+function addAndMultiply(x) {
+    let sum = x + 5;
+    return multiplyByTwo(sum);  // 'multiplyByTwo' function ko yahaan call kar raha hai
+}
+
+console.log(addAndMultiply(3));  // Output: 16 (3 + 5 = 8, 8 * 2 = 16)
+
+
+// Example 2: Do parameters wala function
+function addNumbers(a, b) {
+    return a + b;  // Do parameters 'a' aur 'b' ko add kar raha hai
+}
+
+function subtractAndAdd(x, y) {
+    let difference = x - y;
+    return addNumbers(difference, y);  // 'addNumbers' function ko yahaan call kar raha hai
+}
+
+console.log(subtractAndAdd(10, 4));  // Output: 10 ((10 - 4) + 4 = 6 + 4 = 10)
+
+
+// Function ke andar function ka use
+// Ek function ko kisi dusre function ke andar direct call kar sakte ho, jaise:
+// 
+function square(num) {
+    return num * num;  // Ek parameter 'num' ka square return kar raha hai
+}
+
+function sumOfSquares(a, b) {
+    return square(a) + square(b);  // 'square' function ko yahaan do baar call kar raha hai
+}
+
+console.log(sumOfSquares(3, 4));  // Output: 25 (3^2 + 4^2 = 9 + 16 = 25)
+
+
+// Function ko call karne ke tarike
+
+// 1.>---- Direct Call:
+
+function greet(name) {
+    return `Hello, ${name}!`;
+}
+
+console.log(greet('Shubham'));  // Direct call, Output: "Hello, Shubham!"
+
+// 2.>---- Function Call within Another Function:
+// 
+function greet(name) {
+    return `Hello, ${name}!`;
+}
+
+function greetTwice(name) {
+    return greet(name) + " " + greet(name);  // greet function ko do baar call kar raha hai
+}
+
+console.log(greetTwice('Shubham'));  // Output: "Hello, Shubham! Hello, Shubham!"
+
+// 3.>---- Storing Function Call Result in a Variable:
+function square(num) {
+    return num * num;
+}
+
+let result = square(5);  // square(5) ka result variable 'result' mein store kar raha hai
+console.log(result);  // Output: 25
+
+// 4.>---- Function as an Argument (Higher-Order Functions):
+function applyFunction(func, value) {
+    return func(value);  // 'func' as a function argument use kar raha hai
+}
+
+function double(num) {
+    return num * 2;
+}
+
+console.log(applyFunction(double, 7));  // Output: 14
+
+
+// Functions ke baare mein kuch aur important concepts aur unke examples ke baare mein jaan lena zaroori hai. Yeh tumhari understanding ko aur gehra banayega.
+
+// 1.>---- Function Expressions:
+// Function expressions ka matlab hota hai ki tum function ko ek variable mein assign karte ho. Ye functions naam ke bina bhi ho sakte hain, jise anonymous functions kehte hain.
+
+
+// Named Function Expression
+let add = function addNumbers(a, b) {
+    return a + b;
+};
+
+console.log(add(3, 4));  // Output: 7
+
+// Anonymous Function Expression
+let multiply = function(a, b) {
+    return a * b;
+};
+
+console.log(multiply(5, 6));  // Output: 30
+
+// 2.>---- Arrow Functions:
+// Arrow functions ek concise syntax hai jo function expressions ke liye use hota hai. Yeh function keyword ko replace karta hai aur syntax thoda compact hota hai.
+
+
+// Regular Function Expression
+let greet = function(name) {
+    return `Hello, ${name}!`;
+};
+
+// Arrow Function
+let greetArrow = (name) => `Hello, ${name}!`;
+
+console.log(greet('Shubham'));  // Output: "Hello, Shubham!"
+console.log(greetArrow('Shubham'));  // Output: "Hello, Shubham!"
+
+// 3.>---- Higher-Order Functions:
+// Higher-order functions wo hote hain jo ya to ek function ko argument ke taur par lete hain, ya ek function return karte hain. Yeh functional programming ka ek core concept hai.
+
+
+// Function as an argument
+function doOperationOnNumber(func, num) {
+    return func(num);
+}
+
+function square(n) {
+    return n * n;
+}
+
+console.log(doOperationOnNumber(square, 5));  // Output: 25
+
+// Function returning another function
+function createMultiplier(multiplier) {
+    return function(num) {
+        return num * multiplier;
+    };
+}
+
+let double = createMultiplier(2);
+console.log(double(4));  // Output: 8
+
+let triple = createMultiplier(3);
+console.log(triple(3));  // Output: 9
+
+// 4.>---- Immediately Invoked Function Expression (IIFE):
+// IIFE ek aisa function hota hai jo define hone ke baad turant execute ho jata hai. Isko use karke tum apne code ko ek scope mein wrap kar sakte ho, jisse global scope pollute nahi hota.
+
+
+(function() {
+    console.log('This function runs immediately!');
+})();
+
+// IIFE with parameters
+(function(name) {
+    console.log(`Hello, ${name}!`);
+})('Shubham');
+
+// 5.>---- Closures:
+// Closures ka matlab hota hai ki jab ek inner function apne outer function ke context (variables) ko access kar sakta hai, even after the outer function has finished executing. Yeh ek powerful concept hai JavaScript mein.
+
+
+function outerFunction(outerVariable) {
+    return function innerFunction(innerVariable) {
+        console.log(`Outer variable: ${outerVariable}`);
+        console.log(`Inner variable: ${innerVariable}`);
+    };
+}
+
+const newFunction = outerFunction('outside');
+newFunction('inside');  // Output: Outer variable: outside, Inner variable: inside
+
+// 6.>---- Recursion:
+// Recursion wo technique hai jisme ek function khud ko hi call karta hai. Isko complicated problems ko solve karne ke liye use kiya jata hai.
+
+
+function factorial(n) {
+    if (n === 1) {
+        return 1;
+    } else {
+        return n * factorial(n - 1);
+    }
+}
+
+console.log(factorial(5));  // Output: 120
+
+// 7.>---- Default Parameters:
+// Default parameters ka use tab hota hai jab tumhe function ko kuch default values assign karni ho, agar function ko call karte waqt koi value pass nahi ki gayi ho.
+
+
+function greet(name = 'Guest') {
+    return `Hello, ${name}!`;
+}
+
+console.log(greet());  // Output: "Hello, Guest!"
+console.log(greet('Shubham'));  // Output: "Hello, Shubham!"
+
+// Conclusion:
+// Functions ke concepts bohot versatile hote hain, aur unko acche se samajh kar tum apna code bohot modular, reusable, aur maintainable bana sakte ho. Tumhare pass ab bohot saari techniques hain functions ke saath kaam karne ke liye!
+
     </script>
 </body>
 </html>

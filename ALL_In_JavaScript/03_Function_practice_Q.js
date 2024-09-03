@@ -336,7 +336,35 @@ console.log('20 >-------------------');
 // Write a function named formatPhoneNumber that takes a string of 10 digits and returns it formatted as "(xxx) xxx-xxxx". Then, write another function named isSameAreaCode that takes two phone numbers, uses formatPhoneNumber for both, and checks if they have the same area code (the first three digits).
 
 function formatPhoneNumber (takePhoneNum) {
+    let savePhoneNum = '';
+    let secondtimeSavePhoneNum = '';
     for (let i = 0; i < takePhoneNum.length; i++) {
-         
+        if (i === 3) {
+            savePhoneNum += `) ${takePhoneNum.charAt(i)}`;
+        } else if (i === 6) {
+             savePhoneNum += '-' + takePhoneNum.charAt(i);
+        } else {
+             savePhoneNum += takePhoneNum.charAt(i);
+        }
+    }
+    return `(${savePhoneNum} > ${savePhoneNum.length}`;
+}
+
+function isSameAreaCode (phoneNumOne, phoneNumTwo) {
+    let formattedPhoneNumOne = formatPhoneNumber(phoneNumOne); // using formatPhoneNumber function this way we can format the both number
+    let formattedPhoneNumTwo = formatPhoneNumber(phoneNumTwo);
+
+    // Extracting the area code of thre formatted phone number using slice methode
+    let areaCodeOne = formattedPhoneNumOne.slice(1,4) // Firts 3 digits
+    let areaCodeTwo = formattedPhoneNumTwo.slice(1,4) // Firts 3 digits
+
+    // comparing the area code 
+
+    if (areaCodeOne === areaCodeTwo) {
+        return 'Both number have the same area code.'
+    } else {
+        return 'number have different area code.'
     }
 }
+console.log(isSameAreaCode('7710871353','8898544175'));
+console.log(isSameAreaCode('7710871353','7710978920'));
