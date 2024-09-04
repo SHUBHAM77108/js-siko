@@ -368,3 +368,84 @@ function isSameAreaCode (phoneNumOne, phoneNumTwo) {
 }
 console.log(isSameAreaCode('7710871353','8898544175'));
 console.log(isSameAreaCode('7710871353','7710978920'));
+
+console.log('21 >-------------------');
+// 21 >---Questions
+// Write a function named replaceVowels that takes a string as an argument and returns the string with all vowels replaced by a specific character (e.g., '*'). Then, write another function named obfuscateEmail that uses replaceVowels to obfuscate the email address by replacing the vowels in the username part of the email. a, e, i, o, u
+
+function replaceVowels (vowelStr) {
+    let spicalChar = '*';
+    let replaceWithSpecialChar = '';
+    for (let i = 0; i < vowelStr.length; i++) {
+        if (vowelStr.charAt(i) === 'a' || vowelStr.charAt(i) === 'e' || vowelStr.charAt(i) === 'i' || vowelStr.charAt(i) === 'o' || vowelStr.charAt(i) === 'u') {
+            replaceWithSpecialChar += spicalChar;
+        } else {
+            replaceWithSpecialChar += vowelStr.charAt(i);
+        }
+    }
+    return replaceWithSpecialChar;
+}
+
+function obfuscateEmail (emailReplaceWithVowel) {
+   let saveUserNamePart = '';
+   let saveDomainPart = '';
+    for (let i = 0; i < emailReplaceWithVowel.length; i++) {
+    if (emailReplaceWithVowel.charAt(i) === '@'){
+        saveUserNamePart = emailReplaceWithVowel.slice(0,i); // slice(0, 7) return karega "example", jo ki username part hai.
+
+        saveDomainPart = emailReplaceWithVowel.slice(i); // Jab slice() method ko sirf ek argument (start index) diya jaata hai, jaise ki slice(i), toh yeh start index se lekar string ke end tak ka portion return karta hai.
+
+        break; // No need to continue loop after '@' is found
+    }
+    }
+    let saveEmailReplaceWithVowel = replaceVowels(saveUserNamePart) ;
+    return saveEmailReplaceWithVowel + saveDomainPart;
+}
+
+console.log(obfuscateEmail('example@gmail.com'));
+
+console.log('22 >-------------------');
+// 22 >---Questions 
+// Write a function named getLargestNumber that takes three numbers as arguments and returns the largest of the three. Then, write another function named isLargestNumberPrime that uses getLargestNumber and checks if the largest number is a prime number.
+
+function getLargestNumber (num1,num2,num3) {
+    if (num1 > num2 && num1 > num3) {
+        return num1;
+    } else if (num2 > num1 && num2 > num3) {
+        return num2;
+    } else {
+        return num3;
+    }
+}
+
+function isLargestNumberPrime(num11, num22, num33) {
+    let largestNumber = getLargestNumber(num11,num22,num33)
+
+    // 1 aur -negative number prime nahi hote
+    if (largestNumber <= 1) {
+        return false;
+    }
+
+    // 2 ek prime number hai, toh seedha true return kar do
+    if (largestNumber === 2) {
+        return true;
+    }
+
+    // agar number 2 se divide ho jata hau toh prime nahi hai
+    if (largestNumber % 2 === 0) {
+        return false;
+    }
+
+    // cheak karte hain ki number kisi aur divisor se divide hota hai ya nai
+    for (let i = 3; i <= Math.sqrt(largestNumber); i += 2) {
+        if (largestNumber % i === 0) {
+            return false;
+        }
+    }
+
+    // agar koi divisor nahi mila, toh number prime hai
+    return true;
+}
+
+console.log(isLargestNumberPrime(5, 3, 4)); // Output: true
+console.log(isLargestNumberPrime(8, 10, 12)); // Output: false
