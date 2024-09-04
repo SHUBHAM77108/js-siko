@@ -423,29 +423,100 @@ function isLargestNumberPrime(num11, num22, num33) {
 
     // 1 aur -negative number prime nahi hote
     if (largestNumber <= 1) {
-        return false;
+        return `${largestNumber} is the largest number is not a prime number.`;
     }
 
     // 2 ek prime number hai, toh seedha true return kar do
     if (largestNumber === 2) {
-        return true;
+        return `${largestNumber} is the largest number is a prime number.`;
     }
 
     // agar number 2 se divide ho jata hau toh prime nahi hai
     if (largestNumber % 2 === 0) {
-        return false;
+        return `${largestNumber} is the largest number is not a prime number.`;
     }
 
     // cheak karte hain ki number kisi aur divisor se divide hota hai ya nai
     for (let i = 3; i <= Math.sqrt(largestNumber); i += 2) {
         if (largestNumber % i === 0) {
-            return false;
+            return `${largestNumber} is the largest number is not a prime number.`;
         }
     }
 
     // agar koi divisor nahi mila, toh number prime hai
-    return true;
+    return `${largestNumber} is the largest number is a prime number.`;
 }
 
 console.log(isLargestNumberPrime(5, 3, 4)); // Output: true
 console.log(isLargestNumberPrime(8, 10, 12)); // Output: false
+
+console.log('23 >-------------------');
+// 23 >---Questions 
+// Write a function named countVowels that takes a string as an argument and returns the number of vowels in the string. Then, write another function named hasMoreVowels that takes two strings, uses countVowels for both, and returns true if the first string has more vowels than the second, and false otherwise.
+
+function countVowels (vowelStr) {
+    let countVowels = 0;
+    for (let i = 0; i < vowelStr.length; i++) {
+        if (vowelStr.charAt(i) === 'a' || vowelStr.charAt(i) === 'e' || vowelStr.charAt(i) === 'i' || vowelStr.charAt(i) === 'o' || vowelStr.charAt(i) === 'u') { 
+            countVowels += 1;
+        }
+    }
+    return countVowels;
+}
+
+function hasMoreVowels (vowelStr1, vowelStr2) {
+    let saveVowelStr1 = countVowels(vowelStr1);
+    let saveVowelStr2 = countVowels(vowelStr2);
+
+    if (saveVowelStr1 > saveVowelStr2) {
+        return `${saveVowelStr1} is firts string has more vowel: true`;
+    } else {
+        return `${saveVowelStr2} is second string has more vowel: fales`;
+    }
+}
+
+console.log(hasMoreVowels('exampleofvowels','example'));
+
+console.log('24 >-------------------');
+// 24 >---Questions
+// Write a function named getInitial that takes a string (a name) as an argument and returns the first letter of the name. Then, write another function named areInitialsSame that takes two names, calls getInitial for both, and returns true if both names have the same initial letter, and false otherwise.
+
+function getInitial (firstLetterOfName) {
+    return firstLetterOfName.charAt(0);
+}
+
+function areInitialsSame (firstLetterOfName, secondLetterOfName) {
+    let saveFirstLetterOfName = getInitial(firstLetterOfName);
+    let saveSecondLetterOfName = getInitial(secondLetterOfName);
+
+    if (saveFirstLetterOfName === saveSecondLetterOfName) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+console.log(areInitialsSame('shubham', 'sharma')); // Output: true
+console.log(areInitialsSame('Rahul', 'Vikram'));  // Output: false
+
+console.log('25 >-------------------');
+// 25 >---Questions
+// Write a function named calculateDiscount that takes a price and a discount percentage as arguments and returns the final price after applying the discount. Then, write another function named isDiscountBetter that takes two prices and their respective discounts, calls calculateDiscount for both, and returns true if the first discount is better (results in a lower final price) than the second, and false otherwise.
+
+function calculateDiscount (price,discountPercentages) {
+    let finalPriceOfPurchase = price - ((price * discountPercentages) / 100);
+    return finalPriceOfPurchase;
+}
+
+function isDiscountBetter (price1,discount1,price2,discount2) {
+    let saveTheFinalPriceOfPurchaseOne = calculateDiscount(price1,discount1);
+    let saveTheFinalPriceOfPurchaseTwo = calculateDiscount(price2,discount2);
+    
+    if (saveTheFinalPriceOfPurchaseOne < saveTheFinalPriceOfPurchaseTwo) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+console.log(isDiscountBetter(200,10,200,15));
