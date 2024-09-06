@@ -85,6 +85,56 @@
     // however variable are saving values temporary they only exist on the current page if we refresh the page or close the page all the variable are deleted 
 
     // localStorage is only supports 'string'
+
+    // *** Auto Boxing
+    console.log('hello'.length)
+    console.log('hello'.toUpperCase()); 
+
+    // *** Object references
+    const object1 = {
+        message: "hello"
+    }; // when we create this object the actual value is created somewhere in computer's memory and this variable actually just gets a reference that point to the location in the computer's memory
+
+    const object2 = object1; // so this code doesn't actually make a copy of the object is this makes a copy of the reference that points to the object so this makes a languages more efficient
+
+    object1.message = 'good job!'; //we're not actually copying the object into this variable we're copying reference 
+    console.log(object1); // in output notice that we were able to change the message property even though we created object1 with const and that's because this variable just contains a reference that points to the object so const prevents us from changing reference in the variable but it doesn't prevent us from reaching into the reference 
+    console.log(object2); // object2 message property was also changed even though we only changed object1
+
+    const object3 = {
+        message: 'good job!'
+    }
+
+    console.log(object3 === object1); // this two objects are not equal to each other even though they have the same values inside because objects are reference so object3 also contains a reference and this code compares the references and not the values inside the objects 
+    // so because object3 is a different reference thats ways the results // false 
+    console.log(object1 === object2); // True -- because object1 and object2 has same reference 
+
+    // ShortCut of objects
+    const object4 = {
+        message: 'good job!',
+        price: 799
+    }
+    // const message = object4.message; // get out the message from object4
+    // short ways same think // this shortcut called destructuring
+    const { message, price } = object4;// we use this destructuring for multiple properties
+    console.loh(message); // good job! \n 799
+
+    const object5 = {
+        // message: message // it take whatever inside the message variable and substitutes into this code
+        message, //shorthand property if the property and message is same than we use this
+
+        //*** shorthand method 
+        // method: function function1() {
+        //     console.log('method');
+        // }
+
+        // so this code does the same thing as the code above 
+        method() {
+            console.log('method');
+        }
+    }
+    console.log(object5); //  good job!
+    object5.method();
 </script>
 </body>
 </html>

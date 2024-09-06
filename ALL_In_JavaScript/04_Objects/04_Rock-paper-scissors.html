@@ -21,13 +21,33 @@
             score.wins = 0;
             score.losses = 0;
             score.ties = 0;
+            localStorage.removeItem('score');
         ">Reset ame</button>
     </div> 
     
 </body>
 <script>
+    // const score = {
+    //     wins: 0,
+    //     losses: 0,
+    //     ties: 0
+    // }
+    let score = JSON.parse(localStorage.getItem('score')) || {
+        wins: 0,
+        losses: 0,
+        ties: 0
+    }
+    /*
+    if (!score) {
+        score = {
+            wins: 0,
+            losses: 0,
+            ties: 0
+        };
+    }
+    */
 
-    const score = JSON.parse(localStorage.getItem('score'));
+    // console.log(JSON.parse(localStorage.getItem('score')));
     
     function playGame(playerMove) {
         const computerMove = pickComputerMove();
@@ -88,14 +108,6 @@ Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
         }
 
         return computerMove;
-        console.log('Ayaa nahi return ho ga q sa after return koi abhi value nahai return hote hai return ka phila jo bhai likha hai vo hai return kar sakata hai like:- value, variable, string etc ')
     }
-
-    function calculateTax(Cost, taxPercentages = 0.1){
-        console.log(Cost * taxPercentages);
-    }
-
-    calculateTax(2000, 0.2);
-    calculateTax(5000);
 </script>
 </html>
