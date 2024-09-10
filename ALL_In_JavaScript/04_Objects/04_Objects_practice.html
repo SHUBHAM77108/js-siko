@@ -1,4 +1,13 @@
-// const product1 = {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects Pratices</title>
+</head>
+<body>
+    <script>
+        // const product1 = {
 //     product: 'basketball',
 //     price: 2095
 // }
@@ -50,3 +59,29 @@ console.log('TESTING'.toLowerCase());
 
 console.log('hello'.repeat(2));
 console.log('test'.repeat(3));
+
+// Here are some practice questions combining functions, localStorage, and objects in JavaScript:
+
+// Practice Questions
+// 1---> Questions
+// Write a function named saveUser that takes an object representing a user (with properties name, age, and email) and saves it to localStorage under the key "user". Then, write another function named getUser that retrieves the user object from localStorage and returns it.
+
+function saveUser (name, age, email) {
+    const user = {
+        UserName: name,
+        UserAge: age,
+        UserEmail: email
+    }
+    localStorage.setItem('user', JSON.stringify(user));
+}
+
+function getUser() {
+    let userData = JSON.parse(localStorage.getItem('user'));
+    return userData;
+}
+
+saveUser('shubham',23, 'shu@gmail.com');
+console.log(getUser()); // Retri
+    </script>
+</body>
+</html>

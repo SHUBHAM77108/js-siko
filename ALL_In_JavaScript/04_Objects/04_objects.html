@@ -86,6 +86,32 @@
 
     // localStorage is only supports 'string'
 
+    // localStorage Kya Hai?
+    // localStorage ek JavaScript object hai jo browser ke andar data ko store karne ka kaam karta hai.
+    // Isme stored data tab tak persist karta hai jab tak manually delete nahi kiya jata, chahe browser close ho ya system restart ho.
+    // localStorage me stored data string ke format me hota hai, aur yeh maximum 5MB data store kar sakta hai.
+
+    //     Basic Methods:
+    // 1 localStorage.setItem(key, value):
+
+    // Data ko store karne ke liye.
+    // Example: localStorage.setItem('name', 'Shubham');
+
+    // 2 localStorage.getItem(key):
+
+    // Store kiya hua data retrieve karne ke liye.
+    // Example: let name = localStorage.getItem('name');
+
+    // 3 localStorage.removeItem(key):
+
+    // Kisi specific key-value pair ko delete karne ke liye.
+    // Example: localStorage.removeItem('name');
+
+    // 4 localStorage.clear():
+
+    // localStorage ke saare data ko ek saath clear karne ke liye.
+    // Example: localStorage.clear();
+
     // *** Auto Boxing
     console.log('hello'.length)
     console.log('hello'.toUpperCase()); 
