@@ -66,22 +66,115 @@ console.log('test'.repeat(3));
 // 1---> Questions
 // Write a function named saveUser that takes an object representing a user (with properties name, age, and email) and saves it to localStorage under the key "user". Then, write another function named getUser that retrieves the user object from localStorage and returns it.
 
+// function to save user data in localStorage
 function saveUser (name, age, email) {
     const user = {
         UserName: name,
         UserAge: age,
         UserEmail: email
     }
+    // converting user object to string and saving in localStorage
     localStorage.setItem('user', JSON.stringify(user));
 }
 
+// function to retrieve user data from localStorage
 function getUser() {
-    let userData = JSON.parse(localStorage.getItem('user'));
+    // Retrieving the user data as string and converting it back to object
+    let userData = JSON.parse(localStorage.getItem('user')); // using getItem method 
     return userData;
 }
 
-saveUser('shubham',23, 'shu@gmail.com');
-console.log(getUser()); // Retri
+saveUser('shubham',23, 'shu@gmail.com'); // Saving user data
+console.log(getUser()); // Retrieving user data from localStorage
+
+// 2---> Questions
+// Write a function named saveCar that takes an object representing a car (with properties make, model, and year) and saves it to localStorage under the key "car". Then, write another function named getCar that retrieves the car object from localStorage and returns it.
+
+// function to save data in localStorage 
+function saveCar (make, model, year) {
+    const car = {
+        carMake : make,
+        carModel : model,
+        carYear : year
+    }
+    // converting car object to string and saving in localStorage
+    localStorage.setItem('car',JSON.stringify(car));
+}
+
+// function to retrieve car data from localStorage
+function getCar () {
+    // Retrieving the car data as string and converting it back to object
+    let carData = JSON.parse(localStorage.getItem('car'));
+    return carData;
+}
+
+saveCar('Tata','Nexon', 2022); // Saving user data
+console.log(getCar()); // // Retrieving user data from localStorage
+
+// Practice Questions
+// 3---> Questions
+// Write a function named saveAddress that takes an object representing an address (with properties street, city, and zipCode) and saves it to localStorage under the key "address". Then, write another function named getAddress that retrieves the address object from localStorage.
+
+function saveAddress (street, city, zipcode) {
+    const address = {
+        streetName: street,
+        cityName: city,
+        zipCodeName: zipcode
+    }
+// converting car object to string and saving in localStorage
+localStorage.setItem('address',JSON.stringify(address));
+}
+
+function getAddress () {
+    let addresData = JSON.parse(localStorage.getItem('address'));
+    return addresData;
+}
+
+saveAddress('K.M road kali Nagar','Kolibapur',501455);
+console.log(getAddress());
+
+// 4---> Questions
+// Write a function named saveUserWithTimestamp that takes an object representing a user (with properties name and email) and adds a property timestamp with the current date and time. Then, save this object to localStorage under the key "user". Write another function named getUserAndTimeElapsed that retrieves the user from localStorage and returns how many seconds have passed since the user was saved.
+
+function saveUserWithTimestamp (name,email) {
+    let currentDate = new Date();
+
+    const user = {
+        timestamp: currentDate, // Save the full Date object
+        username: name,
+        userEmail: email 
+    }
+    localStorage.setItem('user',JSON.stringify(user));
+}
+
+function getUserAndTimeElapsed() {
+    // Retrieve the user data from localStorage
+    let savedUser = JSON.parse(localStorage.getItem('user'));
+    
+    if (savedUser) {
+        // Get the saved timestamp and convert it back to a Date object
+        let savedTime = new Date(savedUser.timestamp);
+
+        // Get the current date and time
+        let currentTime = new Date();
+
+        // Calculate the time difference in milliseconds
+        let timeDifference = currentTime - savedTime; // difference in milliseconds
+
+        // Convert milliseconds to seconds
+        let secondsElapsed = Math.floor(timeDifference / 1000);
+
+        return {
+            user: savedUser,
+            secondsElapsed: secondsElapsed
+        };
+    } else {
+        return "No user found in localStorage.";
+    }
+}
+
+saveUserWithTimestamp('Amit', 'amit@.com');
+console.log(getUserAndTimeElapsed());
     </script>
 </body>
 </html>
