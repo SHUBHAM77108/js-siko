@@ -111,7 +111,6 @@ function getCar () {
 saveCar('Tata','Nexon', 2022); // Saving user data
 console.log(getCar()); // // Retrieving user data from localStorage
 
-// Practice Questions
 // 3---> Questions
 // Write a function named saveAddress that takes an object representing an address (with properties street, city, and zipCode) and saves it to localStorage under the key "address". Then, write another function named getAddress that retrieves the address object from localStorage.
 
@@ -175,6 +174,65 @@ function getUserAndTimeElapsed() {
 
 saveUserWithTimestamp('Amit', 'amit@.com');
 console.log(getUserAndTimeElapsed());
+
+
+    // practice questions that focus on working with objects, modifying object properties, using functions inside objects, and practicing object references. These questions will challenge your understanding of objects and how they interact with localStorage and functions inside objects:
+
+    // 1>----Question
+    // Create an object named car with properties make, model, and year. Add a function inside the car object called getCarInfo that returns a string with the car's make, model, and year. Then, write a separate function named saveCarToStorage that saves the car object to localStorage. Finally, write another function named retrieveCarFromStorage that gets the car object from localStorage and logs the result using the getCarInfo method.
+    const car = {
+        make: 'Tata',
+        model: 'Harrier',
+        year: 2203,
+         // Use a regular function and pass properties as arguments
+        getCarInfo: function (make,model,year) {
+            return `${make} ${model} ${year}`;
+        }
+    }
+
+    function saveCarToStorage () {
+    localStorage.setItem('car',JSON.stringify(car));
+    }
+
+    function retrieveCarFromStorage () {
+        let saveCar = JSON.parse(localStorage.getItem('car'))
+
+        // Call the getCarInfo method, passing the properties explicitly
+        return car.getCarInfo(saveCar.make, saveCar.model, saveCar.year);
+    }
+
+    saveCarToStorage();
+    console.log(retrieveCarFromStorage());
+    
+    // 2>----
+    // Create an object named userProfile with properties name, age, and email. Inside the userProfile, define a function updateEmail that takes a new email as a parameter and updates the email property. Then, write a function named saveProfile that saves userProfile to localStorage. After that, retrieve the object from localStorage and call updateEmail on the retrieved object to update the email.
+
+    const userProfile = {
+        name: 'shubham',
+        age: 23,
+        email: 'example@gmail.com',
+        updateEmail: function (newEmail) {
+            this.email = newEmail;
+        }
+    }
+    function saveProfile () {
+       localStorage.setItem('userProfile',JSON.stringify(userProfile));
+    }
+
+    function retrieveSaveProfile(newEmail) {
+        let retrieveProfileData = JSON.parse(localStorage.getItem('userProfile'));
+
+        if (retrieveProfileData) {
+            retrieveProfileData.updateEmail = userProfile.updateEmail;
+            retrieveProfileData.updateEmail(newEmail);
+            return retrieveProfileData;
+        } else {
+            return 'NO profile found in localStroge.';
+        }
+    }
+
+    saveProfile();
+    console.log(retrieveSaveProfile('shubham@gmail.com'));
     </script>
 </body>
 </html>
