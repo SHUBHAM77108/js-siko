@@ -322,6 +322,48 @@ console.log(getUserAndTimeElapsed());
     savePerson();
     console.log(retrievePerson('Sharma'));
 
+    // 5>----Question
+    // Create an object named settings with properties theme, volume, and notificationsEnabled. Inside the object, add a function toggleNotifications that switches the value of notificationsEnabled from true to false or vice versa. Write a function named saveSettings that stores the object in localStorage. Then, write a function named loadSettings that retrieves the settings from localStorage and uses the toggleNotifications method.
+
+    const settings = {
+        theme: 'dark',
+        volume: 75,
+        notificationsEnabled: true,
+        toggleNotifications: function () {
+            if (this.notificationsEnabled === true) {
+                this.notificationsEnabled = false;
+                return this.notificationsEnabled;
+            } else if (this.notificationsEnabled === false) {
+                this.notificationsEnabled = true;
+                return this.notificationsEnabled;
+            } 
+        }
+    }
+
+    function saveSettings () {
+        localStorage.setItem('settings',JSON.stringify(settings));
+    }
+
+    function loadSettings () {
+        let loadSettingsData = JSON.parse(localStorage.getItem('settings'));
+
+        if (loadSettingsData) {
+            // Re-attach the toggleNotifications method
+            loadSettingsData.toggleNotifications = settings.toggleNotifications;
+
+            // Now you can call toggleNotifications method
+            loadSettingsData.toggleNotifications();
+
+            return loadSettingsData;
+        } else {
+            return 'No settings found in localStorage!';
+        }
+    }
+    // save setting in localStroge
+    saveSettings();
+
+    // load settings and call toggleNotifications
+    console.log(loadSettings());
     </script>
 </body>
 </html>
