@@ -364,6 +364,66 @@ console.log(getUserAndTimeElapsed());
 
     // load settings and call toggleNotifications
     console.log(loadSettings());
+
+    //6>----Question
+    //Write an object named user with properties username, password, and a function changePassword that updates the password. Write a separate function storeUser to save this object to localStorage. Then, write another function named resetPassword that retrieves the user object from localStorage and calls changePassword to reset the password to a new value.
+
+    const userP = {
+        username: 'vivek',
+        password: 'vi@859',
+        changePassword: function (newpassword) {
+            this.password = newpassword;
+        }
+    }
+    function storeUser () {
+        localStorage.setItem('userP',JSON.stringify(userP));
+    }
+
+    function resetPassword (newpassword) {
+        let retrieveUserPData = JSON.parse(localStorage.getItem('userP'));
+
+        if (retrieveUserPData) {
+            retrieveUserPData.changePassword = userP.changePassword;
+            retrieveUserPData.changePassword(newpassword);
+            return retrieveUserPData;
+        } else {
+            return 'User not find!';
+        }
+    }
+    storeUser();
+    console.log(resetPassword('Viv@5547'));
+
+    // 7>----Question
+    // Create an object named product with properties name, price, and inStock. Add a function applyDiscount inside the product object that takes a discount percentage and reduces the price accordingly. Write a function named saveProduct that saves the product object to localStorage. Retrieve the product and apply a discount using the applyDiscount function, then log the updated price.
+
+    const productD = {
+        name: 'T-shirt',
+        price: 899,
+        inStock: true,
+        applyDiscount: function () {
+           this.price -= (this.price * 12) / 100;
+        }
+    }
+
+    function saveProductD () {
+        localStorage.setItem('productD',JSON.stringify(productD));
+    }
+
+    function retrieveProducts () {
+        let retrieveProductData = JSON.parse(localStorage.getItem('productD'));
+
+        if (retrieveProductData) {
+            retrieveProductData.applyDiscount = productD.applyDiscount;
+            retrieveProductData.applyDiscount();
+            return retrieveProductData;
+        } else {
+            return 'Product not find!';
+        }
+    }
+
+    saveProductD();
+
+    console.log(retrieveProducts());
     </script>
 </body>
 </html>

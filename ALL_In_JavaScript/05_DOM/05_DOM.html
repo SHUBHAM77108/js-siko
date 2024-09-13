@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <button>hello</button>
+    <button class="js.button">Second Button</button>
+
+    <script>
+        // Dom is just bulit in document object and object works the same way as any other object it contains properties like body and title 
+        // we can access using the dot notation
+        // now document object also has methods like querySelector and querySelectorAll
+        // DOM combines JS and HTML together 
+        // it gives JS full control of the webpage
+        // html element are JS objects
+        // object are value and we can save them inside a variable
+
+        // console.log(document.querySelector('button')); //querySelector does it can get any element from the page and put it inside our javaScript this string tells it which element to get if we type button it will get the first button element from the page
+
+        console.log(document.querySelector('button').innerHTML); // every html element actually has a property called innerHTML which lets us control the html inside the element
+
+        document.querySelector('button').innerHTML = 'Changed' // it only change inside button
+
+        console.log(document.querySelector('.js.button')); // so using a class attribute we can get specific element from the page and put it in our javaScript. 
+        // html element are JS objects
+        // object are value and we can save them inside a variable
+
+        const buttonElement = document.querySelector('.js.button');
+        console.log(buttonElement);
+        /*
+        console.log(document.title);
+        document.title = 'changed';
+
+        console.log(document.body);
+        console.log(typeof document.body);
+
+        console.log(document.body.innerHTML);
+        document.body.innerHTML = '<button>Good Job!</button>';
+        */
+    
+        /*
+        document.body.innerHTML = 'hello';
+        document.title = 'DOM BABA'
+        */
+    </script>
+</body>
+</html>
