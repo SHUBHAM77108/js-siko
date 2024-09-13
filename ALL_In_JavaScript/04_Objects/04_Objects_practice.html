@@ -204,7 +204,7 @@ console.log(getUserAndTimeElapsed());
     saveCarToStorage();
     console.log(retrieveCarFromStorage());
     
-    // 2>----
+    // 2>----Questions
     // Create an object named userProfile with properties name, age, and email. Inside the userProfile, define a function updateEmail that takes a new email as a parameter and updates the email property. Then, write a function named saveProfile that saves userProfile to localStorage. After that, retrieve the object from localStorage and call updateEmail on the retrieved object to update the email.
 
     const userProfile = {
@@ -223,6 +223,8 @@ console.log(getUserAndTimeElapsed());
         let retrieveProfileData = JSON.parse(localStorage.getItem('userProfile'));
 
         if (retrieveProfileData) {
+
+            // Since localStorage cannot store functions, the updateEmail methods are not present in the retrieved object. We restore these methods by manually reattaching userProfile.updateEmail to the retrieveProfileData.
             retrieveProfileData.updateEmail = userProfile.updateEmail;
             retrieveProfileData.updateEmail(newEmail);
             return retrieveProfileData;
@@ -233,6 +235,93 @@ console.log(getUserAndTimeElapsed());
 
     saveProfile();
     console.log(retrieveSaveProfile('shubham@gmail.com'));
+
+    //3>----Questions
+    // Write an object named bankAccount with properties accountHolder, balance, and a function deposit that adds a given amount to the balance. Create another function withdraw inside the bankAccount object that subtracts a given amount from the balance. Then, write a function named storeAccount to save the bankAccount object to localStorage and another function named retrieveAccount that retrieves the object and calls deposit and withdraw to update the balance.
+
+    const bankAccount = {
+        accountHolder: 'Raghu',
+        balance: 2000,
+        deposit: function (amount) {
+            this.balance =this.balance + amount;
+        },
+        withdraw: function (amount) {
+            this.balance -= amount;
+        }
+    }
+
+    function storeAccount () {
+        localStorage.setItem('bankAccount', JSON.stringify(bankAccount));    
+    }
+
+    function retrieveAccount (newbalance) {
+        let saveAccountData = JSON.parse(localStorage.getItem('bankAccount'));
+    if (saveAccountData) {
+
+        //Since localStorage cannot store functions, the deposit and withdraw methods are not present in the retrieved object. We restore these methods by manually reattaching bankAccount.deposit and bankAccount.withdraw to the savedAccountData.
+        saveAccountData.deposit = bankAccount.deposit;
+        saveAccountData.withdraw = bankAccount.withdraw;
+
+        if (newbalance >= 0) {
+            //If the newBalance value is positive (newBalance >= 0), we call savedAccountData.deposit(newBalance) to add the amount to the balance.
+            saveAccountData.deposit(newbalance);
+        } else if (newbalance < 0) {
+            //If the newBalance value is negative (newBalance < 0), we call savedAccountData.withdraw(Math.abs(newBalance)). We use Math.abs to convert the negative value into a positive amount for withdrawal.
+            saveAccountData.withdraw(Math.abs(newbalance));
+        }
+
+        //After updating the balance, the updated savedAccountData is saved back to localStorage using localStorage.setItem('bankAccount', JSON.stringify(savedAccountData)). replacing bankAccount objects data to new update object saveAccountData in localStroge using 'bankAccount' key.
+        localStorage.setItem('bankAccount', JSON.stringify(saveAccountData));
+
+        return saveAccountData;
+    } else {
+            return 'Account holder not find!';
+        }
+    }
+
+    storeAccount();
+    console.log(retrieveAccount(1000));// Deposits 1000 into the account
+    console.log(retrieveAccount(-500));// Withdraws 500 from the account
+
+    // 4>----Question
+    // Create an object named person with properties firstName, lastName, and a function fullName that returns the person's full name. Write a function named changeLastName that takes a new last name as a parameter and updates the lastName property of the person object. Then, save this person object to localStorage and retrieve it to log the full name using fullName.
+
+    const person = {
+        firstName: 'Motu',
+        lastName: 'Singh',
+        fullName: function () {
+            return this.fullName = this.firstName + ' ' + this.lastName;
+        },
+        lastNameChange: function (newLastName) {
+            this.lastName = newLastName;
+        }
+    }
+
+    function savePerson () {
+        localStorage.setItem('person',JSON.stringify(person));
+    }
+
+    function retrievePerson (newLastName) {
+        let retrievePersonData = JSON.parse(localStorage.getItem('person'));
+
+        //Since localStorage cannot store fullName and lastNameChange functions, We restore these methods by manually reattaching in retrievePersonData
+       if(retrievePersonData) {
+
+        retrievePersonData.lastNameChange = person.lastNameChange;
+        retrievePersonData.lastNameChange(newLastName);
+        retrievePersonData.fullName = person.fullName;
+
+        // Get the full name after changing the last name 
+        retrievePersonData.fullName();
+
+        return retrievePersonData
+       } else {
+        return 'Person not find!';
+       }
+    }
+    savePerson();
+    console.log(retrievePerson('Sharma'));
+
     </script>
 </body>
 </html>
