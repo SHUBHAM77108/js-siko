@@ -7,6 +7,12 @@
 </head>
 <body>
     <div style="background-color: aliceblue; border-radius: 15px; width: 30%; height: 20%; display: flex; align-items: center; justify-content: center; gap: 2px; flex-direction: column;">
+        <div class="" style="display: flex;
+        justify-content: end; align-content: center; border-radius: 8px; margin-top: 15px; background-color: rgb(240, 235, 235); width: 85%; height: 120px;">
+            <div style="display: flex; flex-direction: column; align-items: end; justify-content: center; padding-right: 12px;">
+                <p class="js-calculate-value" style="font-size: xx-large; margin: 0; border: 2px solid black; padding: 5px 10px; border-radius: 5px;">0</p>
+            </div>
+        </div>
         <p>
             <button onclick="
                 updateCalculation('1');
@@ -57,7 +63,10 @@
                 updateCalculation(' . ');
             " style="padding: 12px 16px; border-radius: 5px; border: 2px solid #cfcfcf73;">.</button>
             <button onclick="
-            localStorage.getItem
+            calculation = eval(calculation);
+
+            discountCalculatValue();
+
             localStorage.setItem('calculation',calculation);
             " style="padding: 12px 16px; border-radius: 5px; border: 2px solid #cfcfcf73;">=</button>
             <button onclick="
@@ -65,25 +74,34 @@
             " style="padding: 12px 16px; border-radius: 5px; border: 2px solid #cfcfcf73;">/</button>
         </p>
         <button onclick="
-        calculation = '';
-        console.log(calculation)
+        calculation = 0;
 
+        discountCalculatValue();
         // Remember to save the calculation here.
         localStorage.setItem('calculation',calculation);
         " style="padding: 12px 16px; border-radius: 5px; border: 2px solid #cfcfcf73;">CE</button>
     </div>
 </body>
 <script>
+
     let calculation = localStorage.getItem('calculation') || '';
+
+    discountCalculatValue(); 
+
+    function discountCalculatValue () {
+        document.querySelector('.js-calculate-value').innerHTML = calculation;
+    }
 
     function updateCalculation (value) {
         calculation += value;
-        console.log(calculation);
+
+        discountCalculatValue();
+
         localStorage.setItem('calculation', calculation);
     }
 
-    function saveCalculation() {
-        localStorage.setItem('calculation', calculation);
-    }
+    // function saveCalculation() {
+    //     localStorage.setItem('calculation', calculation);
+    // }
 </script>
 </html>

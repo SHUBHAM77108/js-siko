@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Practice</title>
+</head>
+<body>
+    
+    <button onclick="
+        console.log(document.querySelector('.js-9a'));
+    "
+    class="js-9a">9a</button>
+    <button onclick="
+        document.querySelector('.js-9b').innerHTML = '9b done!';
+    "
+    class="js-9b">9a</button>
+
+    <button onclick="
+        resultDisplay('heads');
+    ">heads</button>
+    <button onclick="
+    resultDisplay('tails');
+    ">tails</button>
+    <p class="js-result-btn"></p>
+
+    <input class="js-name" placeholder="Enter your name" onkeydown="handleDisplayNameKeydown(event);" type="text">
+    <button onclick="
+        dispalyName ();
+    ">submit</button>
+    <p class="js-name-display"></p>
+
+    <input class="js-input" placeholder="type something" onkeyup="
+        displayInputInP();
+    ">
+    <p class="js-message"></p>
+    <script>
+        function resultDisplay (result) {
+            if (result === 'heads') {
+                document.querySelector('.js-result-btn').innerHTML = 'You chose: heads';
+            } else if (result === 'tails') {
+                document.querySelector('.js-result-btn').innerHTML = 'You chose: tails';
+            }
+        }
+
+        function handleDisplayNameKeydown(event) {
+        if (event.key === 'Enter') {
+            dispalyName();
+        }
+    }
+
+    function dispalyName () {
+        const inputElementName = document.querySelector('.js-name');
+
+        let name = inputElementName.value;
+
+        document.querySelector('.js-name-display').innerHTML = `Your name is: ${name}`;
+    }
+    
+    function displayInputInP() {
+        const inputElement = document.querySelector('.js-input');
+        console.log(inputElement.value);
+        document.querySelector('.js-message')
+        .innerHTML = inputElement.value;
+    }
+
+    </script>
+</body>
+</html>

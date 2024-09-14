@@ -73,7 +73,7 @@
         }
 
         document.querySelector('.js-total-cost')
-            .innerHTML = `₹ ${cost}`;
+            .innerHTML = `₹ ${Math.round(cost * 100) / 100}`;
 
 // *****************
         // we can also convert other way from a number to a string using String function 

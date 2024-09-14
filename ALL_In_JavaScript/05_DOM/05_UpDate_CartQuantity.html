@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Quantity</title>
+</head>
+<body>
+    <div>
+        <button onclick="console.log(`Cart Quality: ${cartQuality}`)" 
+            style="background-color: rebeccapurple; margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">Show Quantity</button>
+        <button onclick="updateCartQuantity(1); displayCartQualtity(); displayCartQualtity();" 
+            style="background-color: rgb(15, 240, 15); margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">Add to Cart</button>
+        <button onclick="updateCartQuantity(2); displayCartQualtity();" 
+            style="background-color: greenyellow; margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">+2</button>
+        <button onclick="updateCartQuantity(3); displayCartQualtity();" 
+            style="background-color: greenyellow; margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">+3</button>
+        <button onclick="updateCartQuantity(4); displayCartQualtity();"
+            style="background-color: greenyellow; margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">+4</button>
+        <button onclick="updateCartQuantity(5); displayCartQualtity();" 
+            style="background-color: greenyellow; margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">+5</button>
+        <button onclick="updateCartQuantity(-1); displayCartQualtity();" 
+            style="background-color: rgb(249, 80, 80); margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">Remove from Cart</button>
+        <button onclick="updateCartQuantity(-2); displayCartQualtity();" 
+            style="background-color: rgb(249, 80, 80); margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">-2</button>
+        <button onclick="updateCartQuantity(-3); displayCartQualtity();"
+            style="background-color: rgb(249, 80, 80); margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">-3</button>
+        <button onclick="cartQuality = 0; displayCartQualtity(); console.log('Cart was reset.');  console.log(`Cart Quality: ${cartQuality}`)" 
+            style="background-color: red; margin-right: 5px; padding: 15px; font-size: 15px; border-radius: 10px; border: none;">Resert Cart</button>
+    </div>
+    <p class="js-Show-CartQuantity"></p>
+    <script>
+
+    let cartQuality = 0;
+
+    document.querySelector('.js-Show-CartQuantity').innerHTML = `Cart quantity: ${cartQuality}`;
+
+    function displayCartQualtity() {
+        document.querySelector('.js-Show-CartQuantity').innerHTML = `Cart quantity: ${cartQuality}`;
+    }
+
+    function updateCartQuantity(cartQualityValue) {
+        if (cartQuality + cartQualityValue > 10) {
+            alert('The Cart is full');
+            return; // This is called an early return
+        }
+
+        // if we code else if aur else part will not run after passing return.
+
+        if (cartQuality + cartQualityValue < 0) {
+            alert('Not enough items in the cart');
+            return; // This is called an early return
+        }
+            
+        cartQuality += cartQualityValue;
+        console.log(`Cart quantity: ${cartQuality}
+        
+        `); 
+    }
+    </script>
+</body> 
+</html>
