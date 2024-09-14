@@ -9,7 +9,17 @@
     <button>hello</button>
     <button class="js.button">Second Button</button>
 
+    <p>Amazon Shipping Calculator</p>
+    <input type="text" placeholder="Cost of order" class="js-Cost-input" onkeydown="
+    handleCostKeydown(event);
+    ">
+    <button onclick="
+        CalculateTotal();
+    ">Calculate</button>
+    <p class="js-total-cost"></p>
+
     <script>
+//************************        
         // Dom is just bulit in document object and object works the same way as any other object it contains properties like body and title 
         // we can access using the dot notation
         // now document object also has methods like querySelector and querySelectorAll
@@ -17,6 +27,7 @@
         // it gives JS full control of the webpage
         // html element are JS objects
         // object are value and we can save them inside a variable
+        // remember whenever we get a value from the DOM the value will be string
 
         // console.log(document.querySelector('button')); //querySelector does it can get any element from the page and put it inside our javaScript this string tells it which element to get if we type button it will get the first button element from the page
 
@@ -45,6 +56,43 @@
         document.body.innerHTML = 'hello';
         document.title = 'DOM BABA'
         */
+
+    function handleCostKeydown(event) {
+        if (event.key === 'Enter') {
+            CalculateTotal();
+        }
+    }
+
+    function CalculateTotal() {
+        const inputElement =  document.querySelector('.js-Cost-input');
+        // Number function takes whatever's between the brackets and manually converts it into number
+        let cost = Number(inputElement.value);
+
+        if (cost < 40) {
+            cost = cost + 10;
+        }
+
+        document.querySelector('.js-total-cost')
+            .innerHTML = `₹ ${cost}`;
+
+// *****************
+        // we can also convert other way from a number to a string using String function 
+        String(25)
+        // so if string only contains a numbers and we subtract multioly or divide (-*/) JS will automatically convert the string into a number so this gets converted into the num 25 - 5 = 20 
+        // however it's no recommended to do math with string 
+        console.log('25' - 5); // 20 this called type coercion
+        console.log('25' + 5); // 255 because adding works differently
+
+//******************
+        // Window build in objects represents the browser
+        // everything inside the browser is inside the window objects
+        // DOM inside the window objects
+        window.document
+        window.console.log('window');
+        window.alert('')
+        // that because the window object has a shortcut we don't have to type window dot at the front we can just type document or console and JS will automatically add window
+        
+    }
     </script>
 </body>
 </html>
