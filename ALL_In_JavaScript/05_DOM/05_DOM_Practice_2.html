@@ -49,11 +49,38 @@
     ">Change All P Tag color</button>
     <hr><!-- ------------------------------------------------------- -->
 
+    <!-- // 6>----Question -->
     <div>
-        <img src="/img/bg.png" alt="Html img" height="400px">
-        <p></p>
+        <img id="main-image" src="/img/bg.png" alt="Html img" height="400px">
+        <button id="show-details-btn" onclick="
+        displayImageDetails();
+        ">Show details</button>
+        <p id="image-description"></p>
     </div>
+    <hr><!-- ------------------------------------------------------- -->
     
+    <!-- // 7>----Question -->
+    <div>
+        <p class="text">This is the first paragraph.</p>
+        <p class="text">This is the second paragraph.</p>
+        <p>This is a paragraph without the class.</p>
+        <button onclick="changeFontSize()">Change Font Size</button>
+    </div>
+    <hr><!-- ------------------------------------------------------- -->
+    
+    <!-- // 8>----Question -->
+    <input type="text" id="user-input" onkeyup="changeInputBorderColor();">
+    <hr><!-- ------------------------------------------------------- -->
+    
+    <!-- // 9>----Question -->
+    <p id="hidden-text">Hi programers!</p>
+    <button id="toggle-visibility-btn" onclick="toggleVisibility();">show</button>
+    <hr><!-- ------------------------------------------------------- -->
+    
+    <!-- // 10>----Question -->
+    <div>
+        <button onclick="changeButtonText();" id="submit-btn">submit</button>
+    </div>
     <script>
     //Practice Questions
     // 1>----Question
@@ -118,13 +145,75 @@
         }
     }
 
-        // *****************************************************************
+    // *****************************************************************
 
     // 6>----Question
     // Write a function named displayImageDetails that displays the alt attribute of an <img> element with the id "main-image" inside a <p> tag with the id "image-description" when a button with the id "show-details-btn" is clicked.
 
     function displayImageDetails () {
+        const imgTag = document.querySelector('#main-image');
+        const altTagText = imgTag.getAttribute('alt');
 
+        document.getElementById('image-description').innerHTML = altTagText;
+    }
+
+    // *****************************************************************
+
+    // 7>----Question
+    // Create a function named increaseFontSize that increases the font size of all text inside a <div> with the class "text-box" by 2px each time a button with the id "increase-font-btn" is clicked.
+
+    function changeFontSize() {
+        // Select all elements with the class "text"
+        let increaseFont = document.querySelectorAll('.text');
+        
+        // Loop through each element and change its font size
+        for(let i = 0; i < increaseFont.length; i++) {
+            increaseFont[i].style.fontSize = '24px';
+        }
+    }
+
+    // *****************************************************************
+    
+    // 8>----Question
+    // Write a function named changeInputBorderColor that changes the border color of a text input field with the id "user-input" to green if the input value contains more than 5 characters, and red if it contains 5 characters or less.
+
+    function changeInputBorderColor () {
+        let changeBorderColor = document.querySelector('#user-input');
+        if(changeBorderColor.value.length > 5) {
+            changeBorderColor.style.borderColor = 'green';
+        } else if (changeBorderColor.value.length <= 5) {
+            changeBorderColor.style.borderColor = 'red';
+        }
+    }
+
+    // *****************************************************************
+    
+    // 9>----Question
+    // Write a function named toggleVisibility that toggles the visibility of a paragraph with the id "hidden-text" between visible and hidden each time a button with the id "toggle-visibility-btn" is clicked.
+
+    function toggleVisibility () {
+        let visibleAndHide = document.querySelector('#hidden-text')
+        // if (visibleAndHide.style.visibility === 'visible') {
+        //     visibleAndHide.style.visibility = 'hidden';
+        // } else if(visibleAndHide.style.visibility === 'hidden') {
+        //     visibleAndHide.style.visibility = 'visible';
+        // }
+
+        // this upper code will not work because the code is that the initial visibility of the element might not be explicitly set to 'visible' or 'hidden'. When checking visibleAndHide.style.visibility, it might return an empty string ('') if the visibility property is not explicitly set in the CSS, causing the condition to fail.
+        if (visibleAndHide.style.visibility === 'hidden') {
+            visibleAndHide.style.visibility = 'visible';
+        } else {
+            visibleAndHide.style.visibility = 'hidden';
+        }
+    }
+
+    // *****************************************************************
+    
+    // 10>----Question
+    // Write a function named changeButtonText that changes the text of a button with the id "submit-btn" to "Submitted!" once the button is clicked, and also prevents further clicks by disabling the button.
+
+    function changeButtonText () {
+        document.querySelector('#submit-btn').innerHTML = 'Submitted!';
     }
     </script>
 </body>
