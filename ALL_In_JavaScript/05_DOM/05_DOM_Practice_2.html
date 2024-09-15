@@ -6,18 +6,26 @@
     <title>DOM Practice Question 2</title>
 </head>
 <body>
+    <!-- // 1>----Question -->
+    <p>1 Question</p>
     <h1 id="js-main-heading">Welcome to my World</h1>
     <button id="change-heading-btn" onclick="
     changeHeading();
     ">Change Heading</button>
     <hr><!-- ------------------------------------------------------- -->
 
+    <!-- // 2>----Question -->
+    <p>2 Question</p>
     <div id="box" style="background-color: red; width: 100px; height: 100px; border-radius: 5px;" onclick="
     toggleBackgroundColor();
     "></div>
     <button id="toggle-btn" onclick="toggleBackgroundColor()">change Color</button>
     <hr><!-- ------------------------------------------------------- -->
 
+    <!-- // 3>----Question -->
+    <p>3 Question &</p>
+    <!-- // 4>----Question -->
+    <p>4 Question</p>
     <div>
         <input id="js-item-input" onkeyup="
         getStringFromInput();
@@ -26,8 +34,26 @@
         addItemToList();
         clearInputField();
         ">Add item</button>
+
+        <button id="remove-item-btn" onclick="
+        removeLastItem();
+        ">Add item</button>
         <ul id="item-list"></ul>
     </div>
+    <hr><!-- ------------------------------------------------------- -->
+
+    <!-- // 5>----Question -->
+    <p>1 Question</p>
+    <button id="highlight-btn" onclick="
+    highlightParagraphs();
+    ">Change All P Tag color</button>
+    <hr><!-- ------------------------------------------------------- -->
+
+    <div>
+        <img src="/img/bg.png" alt="Html img" height="400px">
+        <p></p>
+    </div>
+    
     <script>
     //Practice Questions
     // 1>----Question
@@ -65,6 +91,40 @@
         let valueSave = getStringFromInput();
         console.log(valueSave.value);
         document.getElementById('item-list').innerHTML += `<li>${valueSave.value}</li>`;
+    }
+
+    // *****************************************************************
+
+    // 4>----Question
+    // Write a function named removeLastItem that removes the last <li> element from an unordered list with the id "todo-list" when a button with the id "remove-item-btn" is clicked.
+    
+    function removeLastItem () {
+        let removeLast = document.getElementById('item-list');
+        removeLast.removeChild(removeLast.lastElementChild);
+        console.log(removeLast.innerHTML);
+    }
+    
+    // *****************************************************************
+
+    // 5>----Question
+    // Write a function named highlightParagraphs that changes the background color of all <p> elements on the page to yellow when a button with the id "highlight-btn" is clicked.
+
+    function highlightParagraphs() {
+        let changeColorPTag = document.getElementsByTagName('p');
+        // Loop throught each <p> element and apply the background color
+        // getElementsByTagName('p') returns an HTMLCollection (essentially an array-like structure), and you can't directly apply a style to the entire collection. You need to loop through each <p> element and apply the style individually.
+        for (let i = 0; i < changeColorPTag.length; i++) {
+            changeColorPTag[i].style.backgroundColor = 'yellow';
+        }
+    }
+
+        // *****************************************************************
+
+    // 6>----Question
+    // Write a function named displayImageDetails that displays the alt attribute of an <img> element with the id "main-image" inside a <p> tag with the id "image-description" when a button with the id "show-details-btn" is clicked.
+
+    function displayImageDetails () {
+
     }
     </script>
 </body>
