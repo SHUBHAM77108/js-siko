@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Practice Question 2</title>
+</head>
+<body>
+    <h1 id="js-main-heading">Welcome to my World</h1>
+    <button id="change-heading-btn" onclick="
+    changeHeading();
+    ">Change Heading</button>
+    <hr><!-- ------------------------------------------------------- -->
+
+    <div id="box" style="background-color: red; width: 100px; height: 100px; border-radius: 5px;" onclick="
+    toggleBackgroundColor();
+    "></div>
+    <button id="toggle-btn" onclick="toggleBackgroundColor()">change Color</button>
+    <hr><!-- ------------------------------------------------------- -->
+
+    <div>
+        <input id="js-item-input" onkeyup="
+        getStringFromInput();
+        ">
+        <button id="add-item-btn" onclick="
+        addItemToList();
+        clearInputField();
+        ">Add item</button>
+        <ul id="item-list"></ul>
+    </div>
+    <script>
+    //Practice Questions
+    // 1>----Question
+    // Create an object named car with properties make, model, and year. Add a function inside the car object called getCarInfo that returns a string with the car's make, model, and year. Then, write a separate function named saveCarToStorage that saves the car object to localStorage. Finally, write another function named retrieveCarFromStorage that gets the car object from localStorage and logs the result using the getCarInfo method.
+
+    function changeHeading () {
+        document.querySelector('#js-main-heading').innerHTML = 'Welcome to My Website';
+    }
+
+    //*****************************************************************
+
+    // 2>----Question
+    // Write a function named toggleBackgroundColor that toggles the background color of a <div> with the id "box" between red and blue whenever a button with the id "toggle-btn" is clicked.
+
+    function toggleBackgroundColor () {
+        let changeColor = document.getElementById('box');
+        changeColor.style.backgroundColor = 'blue';
+    }
+
+    // *****************************************************************
+
+    // 3>----Question
+    // Create a function named addItemToList that takes a string input from a text field with the id "item-input" and adds it as a new <li> element to an unordered list with the id "item-list". The item should be added when the user clicks a button with the id "add-item-btn".
+
+    function getStringFromInput () {
+        let getString = document.getElementById('js-item-input')
+        return getString;
+    }
+
+    function clearInputField() {
+        document.getElementById('js-item-input').value = '';
+    }
+    
+    function addItemToList () {
+        let valueSave = getStringFromInput();
+        console.log(valueSave.value);
+        document.getElementById('item-list').innerHTML += `<li>${valueSave.value}</li>`;
+    }
+    </script>
+</body>
+</html>
