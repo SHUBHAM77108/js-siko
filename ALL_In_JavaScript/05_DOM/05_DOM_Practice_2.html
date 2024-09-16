@@ -81,6 +81,39 @@
     <div>
         <button onclick="changeButtonText();" id="submit-btn">submit</button>
     </div>
+
+    <hr><!-- ------------------------------------------------------- -->
+    
+    <!-- // Bonus Question -->
+    <!-- // 11>---- Question -->
+
+    <input type="text" id="heading-input" placeholder="Enter heading">
+    <input type="text" id="paragraph-input" placeholder="Enter paragraph">
+    <button onclick="createCard()">Add Card</button>
+
+    <div id="card-container"></div>
+
+    <hr><!-- ------------------------------------------------------- -->
+    
+    <!-- // 12>---- Question -->
+    <input type="text" placeholder="Enter task description" id="task-input">
+    <button onclick="addTask();">Add Task</button>
+
+    <div id="task-list"></div>
+
+    <hr><!-- ------------------------------------------------------- -->
+    
+    <!-- // 12>---- Question -->
+    <div>
+        <input type="text" id="js-inputName" placeholder="Enter name">
+        <input type="text" id="js-inputAge" placeholder="Enter age">
+        <input type="text" id="js-inputDescription" placeholder="Enter description">
+        <button onclick="createProfileCard()">Add data</button>
+
+        <div id="profile-container">
+
+        </div>
+    </div>
     <script>
     //Practice Questions
     // 1>----Question
@@ -214,6 +247,119 @@
 
     function changeButtonText () {
         document.querySelector('#submit-btn').innerHTML = 'Submitted!';
+    }
+
+    // *****************************************************************
+    
+    // 11>----Question
+    // Write a function named createCard that creates a new <div> element with a class "card" and adds it to a container <div> with the id "card-container". The new card should contain a heading and a paragraph, and the content should be provided by the user through two input fields (one for the heading and one for the paragraph).
+
+        function createCard() {
+            // Step 1: Get user input
+            let headingValue = document.getElementById('heading-input').value;
+            let paragraphValue = document.getElementById('paragraph-input').value;
+
+            // Step 2: Create a new card div
+            let newCard = document.createElement('div');
+
+            // Step 3: Add the class 'card' to the new div
+            newCard.classList.add('card');
+
+            // Step 4: Create the heading and paragraph elements
+            let heading = document.createElement('h3');
+            heading.textContent = headingValue;
+
+            let paragraph = document.createElement('p');
+            paragraph.textContent = paragraphValue;
+
+            // Step 5: Append the heading and paragraph to the card
+            newCard.appendChild(heading);
+            newCard.appendChild(paragraph);
+
+            // Step 6: Append the card to the card-container div
+            document.getElementById('card-container').appendChild(newCard);
+        }
+        
+    // *****************************************************************
+    
+    // 12>----Question
+    // Write a function named addTask that dynamically creates a new <div> with a class "task-item", containing a <p> element with the task description entered in a text input field (with id "task-input"), and adds it to a <div> with the id "task-list". Add a button inside each task item that allows the user to delete that specific task.
+
+    function addTask () {
+        // step 1: Get the task description from the input
+        let taskDescription = document.getElementById('task-input').value;
+        // step 2: Creating a new div for the task
+        let newTask = document.createElement('div');
+
+        // step 3: add the class 'addtask' to the newTask div
+        newTask.classList.add('addtask');
+
+        // step 4: Creating a paragraph element and the task description 
+        let taskParagraph = document.createElement('p');
+        taskParagraph.textContent = taskDescription;
+
+        // step 5: Creating the "Remove Task" button and adding class inside them aur btn Name
+        let removeTaskButton = document.createElement('button');
+        removeTaskButton.classList.add('removeTaskbtn');
+        removeTaskButton.innerHTML = 'Remove Task';
+
+        // step 6: Append the paragraph and the remove button to the task div
+        newTask.appendChild(taskParagraph);
+        newTask.appendChild(removeTaskButton);
+
+        // step 7: Append the new task div inside to the 'task-list' div
+        document.getElementById('task-list').appendChild(newTask);
+
+        // step 8: Add event listener to the remove button to remove the parent div when clicked
+        removeTaskButton.addEventListener('click', function() {
+            newTask.remove(); // Remove the parent div (newTask) when the button is clicked
+        });
+        console.log(removeTaskButton);
+
+         // Step 9: Clear the input field after adding the task
+        document.getElementById('task-input').value = '';
+    }
+
+        // *****************************************************************
+    
+    // 13>----Question
+    // Write a function named createProfileCard that creates a new <div> with the class "profile-card" and adds it to a <div> with the id "profile-container". The card should include the user’s name, age, and a brief description, which will be provided by the user through three input fields. The card should also have a "Remove" button that deletes the card when clicked.
+
+    function createProfileCard() {
+        let getInputName = document.getElementById('js-inputName').value
+        let getInputAge = document.getElementById('js-inputAge').value
+        let getInputDescription = document.getElementById('js-inputDescription').value
+
+        let createUserCard = document.createElement('div');
+        createUserCard.classList.add('js-user-card');
+
+        let nameParagraph = document.createElement('p');
+        nameParagraph.textContent = `Name: ${getInputName}`;
+
+        let ageParagraph = document.createElement('p');
+        ageParagraph.textContent = `Age: ${getInputAge}`;
+
+        let descriptionParagraph = document.createElement('p');
+        descriptionParagraph.textContent = `Description: ${getInputDescription}`;
+
+        let removeCardButton = document.createElement('button');
+        removeCardButton.innerHTML = 'remove Card';
+
+        createUserCard.appendChild(nameParagraph);
+        createUserCard.appendChild(ageParagraph);
+        createUserCard.appendChild(descriptionParagraph);
+        createUserCard.appendChild(removeCardButton);
+
+        document.getElementById('profile-container').appendChild(createUserCard);
+
+        removeCardButton.addEventListener('click', function() {
+            createUserCard.remove();
+        })
+
+        document.getElementById('js-inputName').value = '';
+        document.getElementById('js-inputAge').value = '';
+        document.getElementById('js-inputDescription').value = '';
+
     }
     </script>
 </body>
