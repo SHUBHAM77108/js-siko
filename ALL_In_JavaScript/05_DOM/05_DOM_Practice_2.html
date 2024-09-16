@@ -111,9 +111,23 @@
         <button onclick="createProfileCard()">Add data</button>
 
         <div id="profile-container">
-
         </div>
     </div>
+
+    <hr><!-- ------------------------------------------------------- -->
+    
+    <!-- // 13>---- Question -->
+    <div>
+        <input type="text" id="js-productName" placeholder="Enter product Name">
+        <input type="text" id="js-productPrice" placeholder="Enter product Price">
+        <button id="js-addProduct" onclick="generateProductList();">Add Product</button>
+
+        <div id="product-container"></div>
+    </div>
+
+    <hr><!-- ------------------------------------------------------- -->
+    
+    <!-- // 14>---- Question -->
     <script>
     //Practice Questions
     // 1>----Question
@@ -359,7 +373,41 @@
         document.getElementById('js-inputName').value = '';
         document.getElementById('js-inputAge').value = '';
         document.getElementById('js-inputDescription').value = '';
+    }
 
+    // *****************************************************************
+    
+    // 14>----Question
+
+    function generateProductList() {
+        let getProductName = document.getElementById('js-productName').value
+        let getProductPrice = document.getElementById('js-productPrice').value
+
+        // create new product div card container
+        let newProductCard = document.createElement('div');
+        newProductCard.classList.add('product-item');
+
+        let productNameParagraph = document.createElement('p');
+        productNameParagraph.textContent = getProductName;
+
+        let productPriceParagraph = document.createElement('p');
+        productPriceParagraph.textContent = getProductPrice;
+
+        let createRemoveBtn = document.createElement('button');
+        createRemoveBtn.innerHTML = 'Remove Product';
+
+        newProductCard.appendChild(productNameParagraph);
+        newProductCard.appendChild(productPriceParagraph);
+        newProductCard.appendChild(createRemoveBtn);
+
+        document.getElementById('product-container').appendChild(newProductCard);
+
+        createRemoveBtn.addEventListener('click', function(){
+            newProductCard.remove();
+        })
+
+        document.getElementById('js-productName').value = '';
+        document.getElementById('js-productPrice').value = '';
     }
     </script>
 </body>
