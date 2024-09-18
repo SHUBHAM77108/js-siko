@@ -103,7 +103,7 @@
 
     <hr><!-- ------------------------------------------------------- -->
     
-    <!-- // 12>---- Question -->
+    <!-- // 13>---- Question -->
     <div>
         <input type="text" id="js-inputName" placeholder="Enter name">
         <input type="text" id="js-inputAge" placeholder="Enter age">
@@ -116,7 +116,7 @@
 
     <hr><!-- ------------------------------------------------------- -->
     
-    <!-- // 13>---- Question -->
+    <!-- // 14>---- Question -->
     <div>
         <input type="text" id="js-productName" placeholder="Enter product Name">
         <input type="text" id="js-productPrice" placeholder="Enter product Price">
@@ -127,7 +127,26 @@
 
     <hr><!-- ------------------------------------------------------- -->
     
-    <!-- // 14>---- Question -->
+    <!-- // 15>---- Question -->
+    <div>
+        <input type="text" placeholder="Enter Question" id="js-question">
+        <input type="text" placeholder="Enter First options" id="js-firstQuestion">
+        <input type="text" placeholder="Enter First options" id="js-secondQuestion">
+        <button id="js-createQuestion" onclick="generatePoll();">Create Question</button>
+
+        <div id="poll-container">
+
+        </div>
+        <!-- <p>HTML stands for?</p>
+        <input type="radio" id="firstOption">
+        <label for="HighText Machine Language" for="firstOption"></label>
+        <input type="radio" id="secondOption">
+        <label for="Hypertext Markup Language" for="secondOption"></label> -->
+    </div>
+
+    <hr><!-- ------------------------------------------------------- -->
+    
+    <!-- // 16>---- Question -->
     <script>
     //Practice Questions
     // 1>----Question
@@ -409,6 +428,84 @@
         document.getElementById('js-productName').value = '';
         document.getElementById('js-productPrice').value = '';
     }
+
+    // *****************************************************************
+    
+    // 15>----Question
+    // Write a function named generatePoll that dynamically creates a poll inside a <div> with the id "poll-container". The poll should include a question (entered by the user) and two options (also inputted by the user). Each option should be represented by a radio button. Include a "Vote" button, and when clicked, display the selected option below the poll.
+
+    function generatePoll() {
+        let getQuestion = document.getElementById('js-question').value
+        let getFirstOption = document.getElementById('js-firstQuestion').value
+        let getSecondOption = document.getElementById('js-secondQuestion').value
+
+        let newContainPoll = document.createElement('div');
+        newContainPoll.classList.add('js-containPoll');
+
+        let createForm = document.createElement('form');
+        createForm.setAttribute('id','userSelect');
+
+        let saveQuestion = document.createElement('p');
+        saveQuestion.textContent = getQuestion;
+
+        let saveFirstOption = document.createElement('input');
+        saveFirstOption.setAttribute('type','radio');
+        saveFirstOption.setAttribute('id','firstOption');
+        saveFirstOption.setAttribute('name','option');
+        saveFirstOption.value = getFirstOption;
+        saveFirstOption.addEventListener('change', getSelectedRadioValue)
+
+        let createLableOne = document.createElement('lable');
+        createLableOne.setAttribute('for','firstOption');
+        createLableOne.textContent = getSecondOption;
+
+        let saveSecondOption = document.createElement('input');
+        saveSecondOption.setAttribute('type','radio');
+        saveSecondOption.setAttribute('id','secondOption');
+        saveSecondOption.setAttribute('name','option');
+        saveSecondOption.value = getSecondOption;
+        saveSecondOption.addEventListener('change',getSelectedRadioValue);
+
+        let createLableTwo = document.createElement('lable');
+        createLableTwo.setAttribute('for','secondOption');
+        createLableTwo.textContent = getSecondOption;
+
+        let createRemoveMCQbtn = document.createElement('button');
+        createRemoveMCQbtn.innerHTML = 'Remove Question';
+
+        let saveOptionValue = document.createElement('p');
+        
+        function getSelectedRadioValue() {
+            let selectedRadio = document.querySelector('input[name="option"]:checked');
+            if (selectedRadio) {
+                saveOptionValue.textContent = selectedRadio.value;
+            }
+        }
+
+        newContainPoll.appendChild(saveQuestion);
+        createForm.appendChild(saveFirstOption);
+        createForm.appendChild(createLableOne);
+        createForm.appendChild(saveSecondOption);
+        createForm.appendChild(createLableTwo);
+        createForm.appendChild(createRemoveMCQbtn);
+        newContainPoll.appendChild(createForm);
+        newContainPoll.appendChild(saveOptionValue);
+
+        document.getElementById('poll-container').appendChild(newContainPoll);
+
+        createRemoveMCQbtn.addEventListener('click', function() {
+            newContainPoll.remove();
+        });
+
+        document.getElementById('js-question').value = '';
+        document.getElementById('js-firstQuestion').value = '';
+        document.getElementById('js-secondQuestion').value = '';
+    }
+
+    // *****************************************************************
+    
+    // 16>----Question
+    //Write a function named createGallery that takes an image URL from an input field and adds a new <img> element with the class "gallery-image" to a <div> with the id "image-gallery". Add a caption input below each image that allows the user to add or edit a caption for the image. Include a "Remove Image" button to delete individual images from the gallery.
     </script>
 </body>
 </html>
