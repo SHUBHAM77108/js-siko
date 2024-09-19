@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM, Objects, and localStorage Practice Questions</title>
+</head>
+    <!-- // 1>----Question -->
+    <div>
+        <form onsubmit="getUser(event)">
+            <input type="text" id="js-userName" placeholder="Enter your name">
+            <input type="text" id="js-userAge" placeholder="Enter your age">
+            <button id="js-submit-btn">Submit</button>
+        </form>
+        <div id="js-mainUserContainer"></div>
+    </div>
+    <hr><!-- ------------------------------------------------------- -->
+    <div class="js-lightAndDarkTheme" >
+        <input type="radio" id="js-checkAndUncheck">
+
+        <button id="js-btnDark">Dark theme</button>
+        <button id="js-btnLight">Light theme</button>
+    </div>
+
+    <!-- // 2>----Question -->
+    
+<body>
+    
+<script>
+    function getUser(event) {
+        event.preventDefault();
+
+        let getName = document.getElementById('js-userName').value;
+        let getAge = document.getElementById('js-userAge').value;
+
+        const saveUserData = {
+            name: getName,
+            age: getAge
+        };
+
+        localStorage.setItem('saveUserData',JSON.stringify(saveUserData));
+
+        let saveUserDataInDiv = document.createElement('div');
+        saveUserDataInDiv.classList.add('js-userContainer');
+
+        let getNameAgeLocalStorage = JSON.parse(localStorage.getItem('saveUserData'));
+
+        let namePara = document.createElement('p');
+        namePara.textContent =`Name: ${getNameAgeLocalStorage.name}`;
+
+        let agePara = document.createElement('p');
+        agePara.textContent = `Age: ${getNameAgeLocalStorage.age}`;
+
+        let removeDatabtn = document.createElement('button');
+        removeDatabtn.innerHTML = "Remove Data";
+
+        saveUserDataInDiv.appendChild(namePara);
+        saveUserDataInDiv.appendChild(agePara);
+        saveUserDataInDiv.appendChild(removeDatabtn);
+
+        document.getElementById('js-mainUserContainer').appendChild(saveUserDataInDiv);
+
+        removeDatabtn.addEventListener('click', function() {
+            localStorage.removeItem("saveUserData");
+            saveUserDataInDiv.remove();
+        });
+
+        document.getElementById('js-userName').value = "";
+        document.getElementById('js-userAge').value = "";
+    }
+
+    // *****************************************************************
+    
+    // 2>----Question
+    // Write a function named saveThemePreference that allows the user to choose between "dark" and "light" themes using radio buttons. Store the theme preference in localStorage. When the page loads, check localStorage and apply the saved theme by changing the background color of the page accordingly.
+
+    function saveThemePreference() {
+        let getCheckAndUncheck = document.getElementById('js-checkAndUncheck').checked;
+
+        document.getElementById('js-btnDark').addEventListener('click', function() {
+            document.getElementById('js-checkAndUncheck').checked = true;
+            document.body.style.backgroundColor = 'black';
+
+            localStorage.setItem('backgroundColor', 'black');
+        });
+
+        document.getElementById('js-btnLight').addEventListener('click', function() {
+            document.getElementById('js-checkAndUncheck').checked = false;
+            document.body.style.backgroundColor = 'blue';
+
+            localStorage.setItem('backgroundColor', 'blue');
+        });
+    }
+
+    window.onload = function() {
+            let saveColor = localStorage.getItem('backgroundColor');
+            if(saveColor) {
+                document.body.style.backgroundColor = saveColor;
+            }
+        }
+    saveThemePreference();
+</script>
+</body>
+</html>
