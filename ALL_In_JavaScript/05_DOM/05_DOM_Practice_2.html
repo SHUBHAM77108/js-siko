@@ -129,7 +129,7 @@
     
     <!-- // 15>---- Question -->
     <div>
-        <input type="text" placeholder="Enter Question" id="js-question">
+        <input type="text" placeholder="Enter Question" id="js-question" >
         <input type="text" placeholder="Enter First options" id="js-firstQuestion">
         <input type="text" placeholder="Enter First options" id="js-secondQuestion">
         <button id="js-createQuestion" onclick="generatePoll();">Create Question</button>
@@ -147,6 +147,15 @@
     <hr><!-- ------------------------------------------------------- -->
     
     <!-- // 16>---- Question -->
+    <div>
+        <input type="text" id="js-imageUrl" placeholder="Enter Url">
+        <!-- <input type="text" id="js-imageCaption" placeholder="Enter Image Caption"> -->
+        <button onclick="createGallery();">Add image</button>
+        <div id="js-image-gallery">
+        </div>
+    </div>
+
+
     <script>
     //Practice Questions
     // 1>----Question
@@ -506,6 +515,76 @@
     
     // 16>----Question
     //Write a function named createGallery that takes an image URL from an input field and adds a new <img> element with the class "gallery-image" to a <div> with the id "image-gallery". Add a caption input below each image that allows the user to add or edit a caption for the image. Include a "Remove Image" button to delete individual images from the gallery.
+
+    function createGallery () {
+        let getUrl = document.getElementById('js-imageUrl').value;
+        // let getCaption = document.getElementById('js-imageCaption').value;
+
+        let createImageContainer = document.createElement('div');
+        createImageContainer.classList.add('gallery-image');
+
+        let saveimg = document.createElement('img');
+        saveimg.setAttribute('src',getUrl);
+
+        let createCaption = document.createElement('input');
+        createCaption.setAttribute('id','js-createCaption');
+        createCaption.setAttribute('type','text');
+        createCaption.setAttribute('placeholder','Enter Img Caption');
+
+        let addCaption = document.createElement('button');
+        addCaption.innerHTML = 'Add Caption';
+
+        let editCaption = document.createElement('button');
+        editCaption.innerHTML = 'Edit Caption'
+
+        // let saveCaption = document.createElement('p');
+        // saveCaption.textContent = getCaption;
+
+        let removeImgAndCaptionbtn = document.createElement('button');
+        removeImgAndCaptionbtn.innerHTML = 'Remove Image'
+
+        createImageContainer.appendChild(saveimg);
+        // createImageContainer.appendChild(saveCaption);
+        addCaption.addEventListener('click', function() {
+            createImageContainer.appendChild(createCaption);
+        });
+        editCaption.addEventListener('click', function() {
+            replaceCaptionToPara.remove();
+            createImageContainer.appendChild(createCaption);
+        })
+        createImageContainer.appendChild(addCaption);
+        createImageContainer.appendChild(editCaption);
+        createImageContainer.appendChild(removeImgAndCaptionbtn);
+
+        document.getElementById('js-image-gallery').appendChild(createImageContainer);
+
+        // let getCaption = document.getElementById('js-createCaption').value;
+        // console.log(getCaption);
+
+        createCaption.addEventListener('keydown', function(event) {
+            if (event.key === "Enter" ){
+                displayCaptionInPara();
+            }
+        });
+
+        let replaceCaptionToPara = document.createElement('p');
+        function displayCaptionInPara () {
+            const captionInputElement = document.getElementById('js-createCaption');
+
+            if (captionInputElement.value === "") {
+                document.getElementById('js-createCaption').value = '';
+            } else {
+                createCaption.remove();
+                replaceCaptionToPara.textContent = captionInputElement.value;
+                createImageContainer.appendChild(replaceCaptionToPara);
+            }
+        }
+
+        removeImgAndCaptionbtn.addEventListener('click', function () {
+            createImageContainer.remove();
+        });
+
+    }
     </script>
 </body>
 </html>
