@@ -23,14 +23,31 @@
 
         <button id="js-btnDark">Dark theme</button>
         <button id="js-btnLight">Light theme</button>
+
+        <button id="js-btnLightAndDark">Theme Chang</button>
     </div>
 
     <hr><!-- ------------------------------------------------------- -->
 
     <!-- // 3>----Question -->
+
+    <div id="js-mianDivToDoList"> 
+        <input type="text" placeholder="Enter taskName" id="js-taskName">
+        <button id="js-taskSubmit" onclick="makeToDoList()">Add task</button>
+    </div>
+    <div id="js-taskList"></div>
+
+    <hr><!-- ------------------------------------------------------- -->
+
+    <!-- // 3>----Question -->
+
+    <div id="js-cart">
+
+    </div>
 <body>
     
 <script>
+    
     function getUser(event) {
         event.preventDefault();
 
@@ -97,12 +114,123 @@
     }
 
     window.onload = function() {
-            let saveColor = localStorage.getItem('backgroundColor');
-            if(saveColor) {
-                document.body.style.backgroundColor = saveColor;
-            }
+        let saveColor = localStorage.getItem('backgroundColor');
+        if(saveColor) {
+            document.body.style.backgroundColor = saveColor;
         }
+    }
     saveThemePreference();
+
+    // same think using one button only
+    function changingThemeOnlyOneBtn () {
+        let getBtnTheme = document.querySelector('#js-btnLightAndDark');
+        let currentTheme = 'red';
+        getBtnTheme.addEventListener('click', ()=>{
+            if (currentTheme === 'red') {
+            currentTheme = 'green';
+            document.querySelector('body').style.backgroundColor = "green";
+        } else {
+            currentTheme = 'red';
+            document.querySelector('body').style.backgroundColor = "red";
+        }
+        });
+    }
+    changingThemeOnlyOneBtn();
+
+    // *****************************************************************
+    
+    // 3>----Question
+    // Create a to-do list where each to-do item is an object with properties taskName and isCompleted. Save the to-do list to localStorage. When the page is refreshed, retrieve the to-do list from localStorage and display the tasks in an unordered list. Include checkboxes for each task, and when checked, mark the task as completed (cross it out) and update the isCompleted property in localStorage.
+
+    function makeToDoList() {
+        let getTaskName = document.querySelector("#js-taskName").value;
+
+        // Retrieve existing tasks or initialize an empty array
+        let todoArray = JSON.parse(localStorage.getItem('todoList')) || [];
+
+        // Make sure todoArray is always an array
+        if (!Array.isArray(todoArray)) {
+            todoArray = [];
+        }
+
+        // Create a new task object
+        const newTask = {
+            taskName: getTaskName,
+            isCompleted: false
+        };
+
+        // Add the new task to the array
+        todoArray.push(newTask);
+
+        // Save the updated array back to localStorage
+        localStorage.setItem('todoList', JSON.stringify(todoArray));
+
+        // Create and display the task in the UI
+        displayTask(newTask);
+
+        // Clear the input field
+        document.querySelector("#js-taskName").value = '';
+    }
+
+    function displayTask(task) {
+        let createUlTage = document.createElement('ul');
+        let taskInliTage = document.createElement('li');
+        taskInliTage.textContent = task.taskName;
+
+        let inputCheakBox = document.createElement('input');
+        inputCheakBox.setAttribute('type', 'checkbox');
+        inputCheakBox.checked = task.isCompleted;
+
+        inputCheakBox.addEventListener('change', function() {
+            task.isCompleted = inputCheakBox.checked;
+            updateLocalStorage();
+        });
+
+        let removeToDoTaskbtn = document.createElement('button');
+        removeToDoTaskbtn.innerHTML = "Remove task";
+        removeToDoTaskbtn.addEventListener('click', function() {
+            taskInliTage.remove();
+            removeTaskFromLocalStorage(task.taskName);
+        });
+
+        createUlTage.appendChild(taskInliTage);
+        taskInliTage.appendChild(inputCheakBox);
+        taskInliTage.appendChild(removeToDoTaskbtn);
+
+        document.getElementById('js-taskList').appendChild(createUlTage);
+    }
+
+    function updateLocalStorage() {
+        let todoArray = [];
+        document.querySelectorAll('#js-taskList li').forEach(function(item) {
+            const taskName = item.childNodes[0].textContent;
+            const isCompleted = item.childNodes[1].checked;
+            todoArray.push({ taskName, isCompleted });
+        });
+        localStorage.setItem('todoList', JSON.stringify(todoArray));
+    }
+
+    function removeTaskFromLocalStorage(taskName) {
+        let todoArray = JSON.parse(localStorage.getItem('todoList')) || [];
+        todoArray = todoArray.filter(task => task.taskName !== taskName);
+        localStorage.setItem('todoList', JSON.stringify(todoArray));
+    }
+
+    window.onload = function() {
+        // Retrieve todoList from localStorage and handle if it's null
+        let retrieveTodoData = JSON.parse(localStorage.getItem('todoList')) || [];
+
+        // Ensure it's an array
+        if (Array.isArray(retrieveTodoData)) {
+            retrieveTodoData.forEach(displayTask);
+        }
+    }
+
+    // *****************************************************************
+    
+    // 4>----Question
+    //Build a simple shopping cart where each product is an object with properties name, price, and quantity. When the user clicks an "Add to Cart" button, save the product to localStorage. Display the cart items on the page and allow the user to update the quantity of each product. When the quantity is updated, modify the corresponding object in localStorage.
+
 </script>
 </body>
 </html>
