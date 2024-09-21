@@ -39,10 +39,18 @@
 
     <hr><!-- ------------------------------------------------------- -->
 
-    <!-- // 3>----Question -->
+    <!-- // 4>----Question -->
 
     <div id="js-cart">
+        <input type="text" id="js-productName" placeholder="Enter product name">
+        <input type="text" id="js-productPrice" placeholder="Enter product price">
+        <input type="text" id="js-productQuantity" placeholder="Enter product quantity">
 
+        <button id="js-productCreateProduct" onclick="makeCart();">Create product</button>
+
+        <div id="js-cartAdd">
+
+        </div>
     </div>
 <body>
     
@@ -230,6 +238,91 @@
     
     // 4>----Question
     //Build a simple shopping cart where each product is an object with properties name, price, and quantity. When the user clicks an "Add to Cart" button, save the product to localStorage. Display the cart items on the page and allow the user to update the quantity of each product. When the quantity is updated, modify the corresponding object in localStorage.
+
+    function makeCart () {
+        let getProductName = document.getElementById('js-productName').value;
+        let getProductPrice = document.getElementById('js-productPrice').value;
+        let getProductQuantity = document.getElementById('js-productQuantity').value;
+
+        let getProductQuantityConvertedValue = Number(getProductQuantity);
+
+        let productArray = JSON.parse(localStorage.getItem('productList')) || [];
+
+        if (!Array.isArray(productArray)) {
+            productArray = [];
+        }
+
+        const newProduct = {
+            productname: getProductName,
+            productprice: getProductPrice,
+            productquantity: getProductQuantityConvertedValue,
+            productQuantityByUser: 0
+        }
+
+        productArray.push(newProduct);
+
+        localStorage.setItem('productList', JSON.stringify(newProduct));
+
+        displayProduct(newProduct);
+
+        document.getElementById('js-productName').value = '';
+        document.getElementById('js-productPrice').value = '';
+        document.getElementById('js-productQuantity').value = '';
+    }
+
+    function displayProduct(product){
+        let createDiv = document.createElement('div');
+        let createProductName = document.createElement('p');
+        createProductName.innerHTML = product.productname;
+        console.log(product.productname);
+
+        let createProductPrice = document.createElement('p');
+        createProductPrice.textContent = product.productprice;
+
+        // let createProductQuantiry = document.createElement('p');
+        // createProductName.textContent = product.productquantity;
+
+        let productQuantityUpdate = document.createElement('button');
+        productQuantityUpdate.textContent = product.productQuantityByUser
+
+        let productQuantityIncrease = document.createElement('button');
+        productQuantityIncrease.innerHTML = "+";
+        productQuantityIncrease.addEventListener('click', ()=> {
+        if (product.productQuantityByUser < product.productquantity){
+            product.productQuantityByUser += 1;
+            productQuantityUpdate.innerHTML = product.productQuantityByUser;
+            } else {
+            productQuantityUpdate.innerHTML = product.productQuantityByUser;
+        };
+        })
+
+        let productQuantityDecrease = document.createElement('button');
+        productQuantityDecrease.innerHTML = "-";
+        productQuantityDecrease.addEventListener('click', ()=> {
+        if (product.productQuantityByUser > 1){
+
+            product.productQuantityByUser -= 1;
+            productQuantityUpdate.innerHTML = product.productQuantityByUser;
+        } else {
+            productQuantityUpdate.innerHTML = product.productQuantityByUser;
+        };
+        });
+
+        let removeProductBtn = document.createElement('button');
+        removeProductBtn.innerHTML = "Remove Product";
+        removeProductBtn.addEventListener('click', ()=> {
+            createDiv.remove();
+        });
+
+        createDiv.appendChild(createProductName);
+        createDiv.appendChild(createProductPrice);
+        createDiv.appendChild(productQuantityUpdate);
+        createDiv.appendChild(productQuantityIncrease);
+        createDiv.appendChild(productQuantityDecrease);
+        createDiv.appendChild(removeProductBtn);
+
+        document.getElementById('js-cartAdd').appendChild(createDiv);
+    }
 
 </script>
 </body>
