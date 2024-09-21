@@ -261,7 +261,7 @@
 
         productArray.push(newProduct);
 
-        localStorage.setItem('productList', JSON.stringify(newProduct));
+        localStorage.setItem('productList', JSON.stringify(productArray));
 
         displayProduct(newProduct);
 
@@ -274,7 +274,6 @@
         let createDiv = document.createElement('div');
         let createProductName = document.createElement('p');
         createProductName.innerHTML = product.productname;
-        console.log(product.productname);
 
         let createProductPrice = document.createElement('p');
         createProductPrice.textContent = product.productprice;
@@ -288,30 +287,29 @@
         let productQuantityIncrease = document.createElement('button');
         productQuantityIncrease.innerHTML = "+";
         productQuantityIncrease.addEventListener('click', ()=> {
-        if (product.productQuantityByUser < product.productquantity){
-            product.productQuantityByUser += 1;
-            productQuantityUpdate.innerHTML = product.productQuantityByUser;
-            } else {
-            productQuantityUpdate.innerHTML = product.productQuantityByUser;
-        };
-        })
+            if (product.productQuantityByUser < product.productquantity){
+                product.productQuantityByUser += 1;
+                productQuantityUpdate.innerHTML = product.productQuantityByUser;
+                updateProductaInLocalStroage();
+            }
+        });
 
         let productQuantityDecrease = document.createElement('button');
         productQuantityDecrease.innerHTML = "-";
         productQuantityDecrease.addEventListener('click', ()=> {
-        if (product.productQuantityByUser > 1){
+            if (product.productQuantityByUser > 1){
 
-            product.productQuantityByUser -= 1;
-            productQuantityUpdate.innerHTML = product.productQuantityByUser;
-        } else {
-            productQuantityUpdate.innerHTML = product.productQuantityByUser;
-        };
+                product.productQuantityByUser -= 1;
+                productQuantityUpdate.innerHTML = product.productQuantityByUser;
+                updateProductaInLocalStroage();
+            }
         });
 
         let removeProductBtn = document.createElement('button');
         removeProductBtn.innerHTML = "Remove Product";
         removeProductBtn.addEventListener('click', ()=> {
             createDiv.remove();
+            removeProductInLocalStroage(product.productName);
         });
 
         createDiv.appendChild(createProductName);
@@ -322,8 +320,41 @@
         createDiv.appendChild(removeProductBtn);
 
         document.getElementById('js-cartAdd').appendChild(createDiv);
+
     }
 
+    function updateProductaInLocalStroage() {
+        let productArray = JSON.parse(localStorage.getItem('productList')) || [];
+
+    // Update localStorage by getting the updated values from the displayed products
+    const updatedProducts = [...document.querySelectorAll('#js-cartAdd div')].map(item => {
+        const productName = item.querySelector('p').innerHTML;
+        const productPrice = item.querySelectorAll('p')[1].innerHTML;
+        const productQuantityByUser = parseInt(item.querySelector('button').textContent);
+
+        return {
+            productname: productName,
+            productprice: productPrice,
+            productQuantityByUser: productQuantityByUser
+        };
+    });
+
+    localStorage.setItem('productList', JSON.stringify(updatedProducts));
+    }
+
+    function removeProductInLocalStroage(productName) {
+    let productArray = JSON.parse(localStorage.getItem('productList')) || [];
+    productArray = productArray.filter(product => product.productname !== productName);
+    localStorage.setItem('productList', JSON.stringify(productArray));
+}
+
+window.onload = function() {
+    let retrieveProductData = JSON.parse(localStorage.getItem('productList')) || [];
+
+    if (Array.isArray(retrieveProductData)) {
+        retrieveProductData.forEach(product => displayProduct(product));
+    }
+}
 </script>
 </body>
 </html>
