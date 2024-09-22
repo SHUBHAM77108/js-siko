@@ -16,6 +16,19 @@
         
     // inside an array we can put any type of value for example
     [1, 'hello', true, {name: 'laptop'}, [1, 2]];
+    // in this array we can add an array
+
+    console.log(typeof [1, 2]);// object (it's just a special type of object)
+    // if we want to check if something is specifically an array we can use this code A Array.isArray([1, 2])
+    console.log(Array.isArray([1, 2]));// true
+
+    console.log(myArray.length);// this we can find the length of array
+
+    myArray.push(100); //this way we can add any value at end of array
+    console.log(myArray);// [99, 20, 30, 100]
+
+    myArray.splice(0, 1)// splice takes two numbers
+    console.log(myArray); // [20, 30, 100]
     </script>
 </body>
 </html>
