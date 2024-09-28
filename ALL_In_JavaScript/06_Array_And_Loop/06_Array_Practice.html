@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=74
+    
+    , initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // Array Practice Questions
+    //1 Question:
+    // Write a function named sumArray that takes an array of numbers as an argument and returns the sum of all the numbers in the array. If the array is empty, return 0.
+
+    function sumArray(array){
+        let ALLSum = 0
+        if (array === undefined) {
+            return 0;
+        } else {
+            for (let i = 0; i < array.length; i++) {
+            ALLSum += array[i];
+            }
+        }
+        return ALLSum;
+    }
+
+console.log(sumArray([2,4,6,4,1,1]));
+console.log(sumArray([]));
+
+    // 2 Question:
+    // Write a function named findMax that takes an array of numbers as an argument and returns the largest number in the array.
+
+    function findMax (findMax) {
+        let max = findMax[0];
+        for (let i = 0; i < findMax.length; i++) {
+            if(findMax[i] > max){
+                max = findMax[i];
+            }
+        }
+        return max;
+    }
+
+    console.log(findMax([3, 7, 2, 8, 5]));
+
+    // 3 Question:
+    // Write a function named reverseArray that takes an array as an argument and returns a new array with the elements in reverse order.
+
+    function reverseArray(reverseArray) {
+        let reversevalue = [];
+        for (let i = reverseArray.length - 1; i >= 0; i--){
+            reversevalue += reverseArray[i];
+        }
+        console.log(reversevalue)
+    }
+
+    reverseArray([1,2,3,4,5,6]);
+
+    // 4 Question:
+    // Write a function named removeElement that takes an array and a specific value as arguments. The function should return a new array that contains all the elements from the original array except for the specified value.
+
+    function removeElement(array,removeElement) {
+        let newArray = array;
+        for (let i = 0; i < newArray.length; i++) {
+            if (newArray[i] === removeElement) {
+                newArray.splice(i,1);
+            }
+        }
+        return newArray;
+    }
+    console.log(removeElement([1,2,3,4,5],3));
+
+    // 5 Question:
+    // Write a function named countOccurrences that takes an array and a value as arguments. The function should return the number of times the value occurs in the array.
+
+    function countOccurrences(array, valueOccurrences) {
+        let countOccurrences = 0;
+        for(let i = 0; i < array.length; i++) {
+            if (array[i] === valueOccurrences) {
+                countOccurrences += 1;
+            }
+        }
+        return countOccurrences;
+    }
+
+    console.log(countOccurrences([1,2,3,2,4,6,5,2],2));
+
+    // 6 Question:
+    // Write a function named mergeArrays that takes two arrays as arguments and returns a new array that contains all elements from both arrays.
+
+    function mergeArrays(arrayOne,arrayTwo) {
+        let mergeArrays = arrayOne;
+        for(let i = 0; i < arrayTwo.length; i++) {
+            mergeArrays.push(arrayTwo[i]);
+        }
+        return mergeArrays;
+    }
+    console.log(mergeArrays([1,2,3],[4,5,6,7,8,9,10]));
+
+    // 7 Question:
+    // Write a function named filterEvenNumbers that takes an array of numbers as an argument and returns a new array that contains only the even numbers from the original array.
+
+    function filterEvenNumbers(array) {
+        let arrayOfEven = [];
+        for (let i = 0; i < array.length; i++) {
+            if (array[i] % 2 === 0) {
+                arrayOfEven.push(array[i]);
+            }
+        }
+        return arrayOfEven;
+    }
+
+    console.log(filterEvenNumbers([1,2,5,7,8,12,14,13]));
+
+    // 8 Question:
+    // Write a function named uniqueElements that takes an array as an argument and returns a new array with only the unique elements (i.e., removes any duplicates).
+    
+    function uniqueElements(array) {
+
+        const result = [];
+        for(let i = 0; i < array.length; i++) {
+            const word = array[i];
+            if(findIndex(result, word) === -1){
+                result.push(word);
+            }
+        }
+        return result;
+    }
+
+    console.log(uniqueElements([1,5,2,3,4,2,3,6,1]));
+
+    // 9 Question:
+    // Write a function named findIndex that takes an array and a value as arguments. The function should return the index of the first occurrence of the value in the array, or -1 if the value is not found.
+    function findIndex(array,arrayValue) {
+        for(let i = 0; i < array.length; i++){
+            if(array[i] === arrayValue) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    console.log(findIndex([1,2,3,4,6,9],8));
+
+    // 10 Question:
+    // Write a function named rotateArray that takes an array and a number n as arguments. The function should rotate the array by moving the first n elements to the end of the array and return the result.
+
+    function rotateArray(array,num) {
+    let firtelementArray = num[0];
+    array.splice(firtelementArray,1);
+    array.push(firtelementArray[i]);
+    console.log(array);
+    }
+    rotateArray([2,3,4,6],)
+
+</script> 
+</body>
+</html>
