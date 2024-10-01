@@ -7,7 +7,6 @@
 </head>
 <body>
     <script>
-    
     // Here are some practice questions that focus on passing functions into other functions, similar to callback functions:
 
     //Practice Questions: Functions Inside Functions
@@ -148,9 +147,59 @@
     //**** 9> Question:
     // Write a function named retryOperation that accepts a function and a number of retries. The function should attempt to call the provided function the given number of times. If the function succeeds (returns true), it should stop. If it fails (returns false), it should retry.
 
-    function retryOperation() {
-        
+    function retryOperation(retries, fun) {
+        for(let i = 0; i < retries; i++) {
+            const success = fun(); // call the provided function
+
+            if(success) {
+                console.log(`Operation succeeded on attempt ${i + 1}`);
+                return true; // stop if the function return true;
+            }
+            console.log(`Attempt ${i + 1} failed, Retrying...`);
+        }
+        console.log(`Operation failed after maximum retries.`);
+        return false;//If all retries fail, return false
     }
+
+    function myFail() {
+        const random = Math.random();
+        return random > 0.5;
+    }
+
+    retryOperation(5, myFail);
+
+    //**** 10> Question:
+    // Write a function named applyToEach that accepts an array and a function. The function should be applied to each element of the array.
+
+    function applyToEach(arr, fun) {
+        const newArray = [];
+        for(const element of arr) {
+            newArray.push(fun(element));
+        }
+        console.log(newArray);
+    }
+
+    applyToEach([1, 2, 3, 4], (n)=> {
+        return n * n;
+    })
+
+//************************************************
+// Practice Questions: Functions, setTimeout, setInterval
+
+    // 1> Question:
+    // Write a function named delayedMessage that takes a string and a delay (in milliseconds) as arguments. Use setTimeout to log the message to the console after the specified delay.
+
+    function delayedMessage(str, delaye) {
+        setTimeout(()=> {
+            console.log(`${str}`);
+        },delaye);
+    }
+
+    delayedMessage('Hello, World!', 2000);
+
+    // 2> Question:
+    // Write a function named repeatMessage that takes a string and a delay (in milliseconds) as arguments. Use setInterval to log the message to the console repeatedly every delay milliseconds.
+    
     </script>
 </body>
 </html>
