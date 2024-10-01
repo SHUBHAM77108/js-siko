@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // This is function
+        function greeting(){
+            console.log('hello');
+        }
+        greeting(); // this is called the Call Function and (running function)
+
+        // Function are also values we can save inside a variable like number,string and boolean values;
+
+        const function1 = function greeting(){
+            console.log('hello');
+        };
+
+        console.log(function1); // return hole function
+        console.log(typeof function1); // function
+        function1(); // we can call function this wall by using variable name and this will be excute ha function // hello
+
+        // In upper function we use the variable name to call the function not using the function name (greeting) to call
+        // that way we not use of function name than we can remove them 
+
+        const function2 = function() {
+            console.log('hello');
+        } // this called Anonymous Function which means a function wihout a name 
+
+//*** advantages of simple function creating is we  one it's easier to read and number two it gives us a feature called hoisting which means we can call this function greeting brackets before we create
+
+        // using hoisting we don't have to worry about what order we write this code
+
+        // hoisting doesn't work when we create our function and save it in a variable
+
+        const object1 = {
+            num: 2,
+            // we don't need to give function name because we use call function using method name 
+            // Anonymous Function
+            // fun: function greeting() {
+            fun: function() {
+                console.log('hello3');
+            }
+        };
+        object1.fun(); // we can call function save inside objects method.
+
+        function display(param) {
+            console.log(param);
+        }
+
+        display(2); // this way we can also pass a function into a function
+
+        function run(param) {
+            // we can use param just like variable and because param contains function we can actually call it 
+            param(); // hello4 // this called (passing a function into another function)
+        }
+
+        // So this take function and save into param
+        run(function() {
+            console.log('hello4');
+        })
+        //the function we're passing inside run we're are called a (callback function) or a (callback)
+
+//*** so setTimeout is build in function in JS
+        // now setTimeout is take two parameters:
+        // 1) A function we want to run in the future
+        // 2) How long to wait before running this function (take a number in millisecond) 1000 millisecond = 1 second;
+        setTimeout(function() {
+            console.log('timeout');
+            console.log('timeout2');// that we normally write will be synchronous code line by line
+        }, 3000);// so setTimeout will wait for 3 sec
+        //so that is setTimeout we give it a function and it will call this function after a certain amount of time
+
+        //*** so now we're going to learn called Asynchronous code
+        console.log('next line');//this will run first before setTimeout function this called asynchronous code
+
+        //asynchronous code:
+        // means won't wait for a line to finish before going to the next line (as usual the only time that code becomes asynchronous is when we use certain feature of JS like setTimeout)
+
+        // synchronous code:
+        // means will wait for one line to finish before going to the next line // so all the code we're written in this JS learning so far has been synchronous code (code run line by line)
+
+        // so setTimeout is only part that is asynchronous now the advantages of set timeout being asynchronous is that it doesn't block our code for 3 second waiting for this timer to finish
+
+
+//****so setTimeout is build in function in JS
+        // now setTimeout is take two parameters:
+        // 1) A function we want to run in the future
+        // 2) How long to wait before running this function (take a number in millisecond) 1000 millisecond = 1 second;
+        setInterval(function() {
+            console.log('interval');
+        }, 3000);// setInterval will run this function every 3 sec
+        // setInterval is also asynchronous
+
+        console.log('next line 2')
+    </script>
+</body>
+</html>

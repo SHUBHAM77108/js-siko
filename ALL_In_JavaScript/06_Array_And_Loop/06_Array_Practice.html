@@ -146,13 +146,24 @@ console.log(sumArray([]));
     // Write a function named rotateArray that takes an array and a number n as arguments. The function should rotate the array by moving the first n elements to the end of the array and return the result.
 
     function rotateArray(array,num) {
-    let firtelementArray = num[0];
-    array.splice(firtelementArray,1);
-    array.push(firtelementArray[i]);
+    let firtelementArray = array.splice(0,num);
+        for (let i = 0; i <= num.length; i++) {
+            array.push(firtelementArray[i]);
+        }
     console.log(array);
     }
-    rotateArray([2,3,4,6],)
+    rotateArray([2,3,4,6],[2])
 
+    // Bonus
+    // 11 Question
+    // Write a function named arrayIntersection that takes two arrays as arguments and returns a new arrays that contains only the elements that are present in both arrays.
+
+    function arrayIntersection(arrayOne, arrayTwo) {
+        let containsBothArray = arrayOne.concat(arrayTwo);
+        return containsBothArray;
+    }
+
+    console.log(arrayIntersection([1,2,3,4],[5,6,7,8]));
 </script> 
 </body>
 </html>
