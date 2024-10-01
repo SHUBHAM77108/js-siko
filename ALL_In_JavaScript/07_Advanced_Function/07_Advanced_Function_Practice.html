@@ -189,17 +189,52 @@
     // 1> Question:
     // Write a function named delayedMessage that takes a string and a delay (in milliseconds) as arguments. Use setTimeout to log the message to the console after the specified delay.
 
-    function delayedMessage(str, delaye) {
+    function delayedMessage(str, delay) {
         setTimeout(()=> {
             console.log(`${str}`);
-        },delaye);
+        },delay);
     }
 
     delayedMessage('Hello, World!', 2000);
 
     // 2> Question:
     // Write a function named repeatMessage that takes a string and a delay (in milliseconds) as arguments. Use setInterval to log the message to the console repeatedly every delay milliseconds.
-    
+
+    function repeatMessage(str, delay) {
+        setInterval(()=> {
+            console.log(`${str}`);
+        },delay)
+    }
+
+    // repeatMessage('Repeating message...', 1000); // should log the message every 1 second
+
+    // 3> Question:
+    // Write a function named countdown that accepts a number and counts down to 0, logging each number. Use setInterval to decrease the number by 1 every second. When the countdown reaches 0, stop the interval and log "Time's up!".
+
+    function countdown(num) {
+        // for(let i = num; i >= 0; i--) {
+        //     if (i >= 0) {
+        //         let clearIntervalId = setInterval(()=> {
+        //             clearInterval(clearIntervalId);
+        //             console.log(i);
+        //         },4000);
+        //     } else {
+        //         clearInterval(clearIntervalId);
+        //     }
+        // }
+
+        const intervalId = setInterval(()=> {
+            console.log(num);
+            num--;
+
+            if (num < 0 ) {
+                clearInterval(intervalId);
+            }
+        },1000)
+
+    }
+
+    countdown(5);
     </script>
 </body>
 </html>
