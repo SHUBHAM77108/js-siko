@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Function Practice</title>
+</head>
+<body>
+    <script>
+    
+    // Here are some practice questions that focus on passing functions into other functions, similar to callback functions:
+
+    //Practice Questions: Functions Inside Functions
+
+    //**** 1> Question:
+    // Write a function named executeOperation that takes two arguments: a number and a function. The function argument should be called with the number as its argument.
+
+    function executeOperation(num, fun) {
+        return fun(num);
+    }
+
+    // function double(n) {
+    //     return n * 2;
+    // }
+
+    // console.log(executeOperation(5, double));
+    console.log(executeOperation(10, function(n) {
+        return n * 2;
+    })); // we can also use this way 
+
+
+    //**** 2> Question:
+    // Write a function named doMathOperation that accepts two numbers and a function as parameters. The function parameter should be a mathematical operation (addition, subtraction, multiplication, or division) and should be called with the two numbers.
+
+    function doMathOperation(num1, num2, fun) {
+        return fun(num1, num2);
+    }
+
+    function add(a, b) {
+        return a + b;
+    }
+
+   console.log(doMathOperation(3, 4, add)); // should return 7
+
+   //**** 3> Question:
+    //Write a function named applyTwice that takes a function as an argument and calls it twice.
+
+    function applyTwice(fun) {
+        fun();
+    }
+
+    applyTwice(function() {
+        console.log('Hello');
+    });
+
+    //**** 4> Question: 
+    //Write a function named performAsyncTask that accepts a function as a callback and calls it after 2 seconds.
+
+    function performAsyncTask(callback) {
+        console.log('run before Task');
+        setTimeout(()=> {
+            callback();
+        }, 2000);
+    }
+
+    function showMessage() {
+        console.log('Task completed!')
+        // return setTimeout(()=> {
+        //     console.log('Task completed!');
+        // }, 3000);
+    }
+
+    performAsyncTask(showMessage);
+
+    // performAsyncTask(setTimeout(()=> {
+    //     console.log('Task completed!'); //it will run continus in loop after every 3 sec
+    // },3000));
+
+
+    //**** 5> Question: 
+    //Write a function named filterArray that accepts an array and a function as parameters. The function should be a filter condition, and filterArray should return a new array containing only the elements that satisfy the condition.
+
+    function filterArray(arr, fun) {
+        let newArr = [];
+        for(const element of arr) {
+            // console.log(element);
+            if(fun(element)) {
+                newArr.push(element);
+            }
+        }
+        return newArr;
+    }
+
+    function isEven(n) {
+        return n % 2 === 0;
+    }
+
+    console.log(filterArray([1,2,3,4,5,6], isEven));
+
+
+    //**** 6> Question: 
+    //Write a function named processString that accepts a string and a function as arguments. The function parameter should process the string (e.g., convert to uppercase, reverse the string, etc.) and return the result.
+
+    function processString(str, fun) {
+        return fun(str);
+    }
+
+    console.log(processString('hello', (str)=> {
+        return str.toUpperCase();
+    }));
+
+    console.log(processString('hello', (str)=> {
+        let newStr = '';
+        for(let i = str.length; i >= 0; i--) {
+            newStr += str.charAt(i);
+        }
+        return newStr.toUpperCase();
+    }));
+
+
+    //**** 7> Question: 
+    //Write a function named logWithPrefix that accepts a string and a function. The function argument should add a prefix (like "INFO: ") to the string and log the result.
+
+    function logWithPrefix(str, fun) {
+        fun(str);
+    }
+
+    logWithPrefix('System running smoothly', (str)=> {
+        console.log("INFO: " + str);
+    });
+
+    //**** 8> Question: 
+    // Write a function named runNTimes that takes a function and a number n as arguments. The function should be called n times.
+
+    function runNTimes(num, fun) {
+        let i = 1; {
+            while (i <= num) {
+                fun(num);
+                i++
+            }
+        }
+    }
+
+    runNTimes(3,()=> {
+        console.log('Hello');
+    });
+
+    //**** 9> Question:
+    // Write a function named retryOperation that accepts a function and a number of retries. The function should attempt to call the provided function the given number of times. If the function succeeds (returns true), it should stop. If it fails (returns false), it should retry.
+
+    function retryOperation() {
+        
+    }
+    </script>
+</body>
+</html>
