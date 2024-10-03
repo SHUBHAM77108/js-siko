@@ -230,11 +230,44 @@
             if (num < 0 ) {
                 clearInterval(intervalId);
             }
-        },1000)
+        },1000); // setInterval is also loop in 
 
     }
 
     countdown(5);
+
+    //**** 4> Question:
+    // Write a function named delayedCallback that takes a callback function and a delay (in milliseconds) as arguments. The function should call the callback after the specified delay using setTimeout.
+
+    function delayedCallback(callbackfun, delay) {
+        setTimeout(()=> {
+            callbackfun();
+        }, delay);
+    }
+
+    delayedCallback(()=> {
+        console.log('Hi');
+    }, 3000);
+
+    //**** 5> Question:
+    // Write a function named stopAfterNCalls that accepts a callback function, delay, and a number n. Use setInterval to call the callback every delay milliseconds, but stop the interval after the callback has been called n times.
+
+    function stopAfterNCalls(callbackfun, delay, repeatNTime) {
+    // let count = repeatNTime;
+    let intervalId = setInterval(()=> {
+        callbackfun();
+        repeatNTime--;
+        if(repeatNTime === 0){
+            clearInterval(intervalId);
+        }
+    },delay);
+    }
+
+    function logMessage() {
+        console.log('Hello');
+    }
+
+    stopAfterNCalls(logMessage, 3000, 3);
     </script>
 </body>
 </html>

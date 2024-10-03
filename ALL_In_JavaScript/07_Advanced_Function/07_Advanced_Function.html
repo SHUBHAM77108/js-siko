@@ -97,6 +97,66 @@
         // setInterval is also asynchronous
 
         console.log('next line 2');
+
+
+//****forEach() array Method:
+    //Works only on arrays
+ // forEach() JavaScript ka ek powerful array method hai jo array ke har element ke liye ek specific function ko execute karta hai. Yeh method array ke har element ko ek baar visit karta hai aur uske liye provided callback function ko call karta hai.
+
+    // Syntax:
+    //array.forEach(function(element, index, array) {
+    // Code to be executed for each element
+    //});
+
+    // array: Yeh woh array hai jisme forEach method apply ho raha hai.
+    //function(element, index, array): Yeh callback function hai jo array ke har element ke liye call hota hai.
+    //element: Array ka current element jo us waqt process ho raha hai.
+    //index (optional): Yeh us current element ka index hota hai.
+    //array (optional): Yeh pura array hota hai jisme se element aaya hai.
+
+    //****************************************
+    // Example 1: Simple forEach() without index
+
+    const fruits = ['apple', 'banana', 'mango'];
+
+    fruits.forEach(function(fruit) {
+    console.log(fruit);
+    }); // apple banana mango
+
+    //****************************************
+    // Example 2: Using index in forEach()
+
+    fruits.forEach(function(fruit, index) {
+    console.log(`${index}: ${fruit}`);
+    });// 0: apple 1: banana 2: mango
+
+    //****************************************
+    // Example 3: Using all 3 parameters (element, index, and array)
+
+    fruits.forEach(function(fruit, index, array) {
+    console.log(`Index ${index}: ${fruit} in array [${array}]`);
+    });
+    //Index 0: apple in array [apple,banana,mango]
+    //Index 1: banana in array [apple,banana,mango]
+    //Index 2: mango in array [apple,banana,mango]
+
+    //***** Important points:
+
+    //1 Modifying the array: forEach() me directly array modify nahi karna chahiye. Agar aapko array me changes karne hain, to map(), filter() jaise methods use karna better hota hai.
+
+    //2 Breaking out of forEach(): forEach() ko middle me break nahi kar sakte jaise aap for loop me break statement use karte ho. Agar kisi specific condition pe loop ko rokna hai to forEach() sahi choice nahi hai, uske liye for ya for...of loops better hai.
+
+    //***** Common Use Cases:
+
+    // Jab aapko array ke elements ko process karna ho bina koi new array return kiye.
+    // Jab aapko array ke elements ke sath koi side effect perform karna ho (like printing, updating DOM, etc.).
+
+    //***** Conclusion:
+
+    // forEach() simple aur convenient hota hai jab aapko array ke har element ke upar koi operation perform karna ho bina result ko return kiye.
+    // forEach() mainly use hota hai jab aapko bas array ko traverse karna ho ya operations perform karne ho, aur array ka output modify nahi karna ho.
+
+    
     </script>
 </body>
 </html>
