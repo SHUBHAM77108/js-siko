@@ -21,6 +21,9 @@ function renderTodoList() {
     document.querySelector('.js-todo-list').innerHTML = todoListHtml;
 }
 
+document.querySelector('.add-todo-button').addEventListener('click', ()=> {
+    addTodo();
+});
 
 function addTodo() {
     const getTodoName = document.querySelector('.js-name-input');
