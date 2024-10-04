@@ -99,7 +99,7 @@
         console.log('next line 2');
 
 
-//****forEach() array Method:
+//****forEach() array Method:---------
     //Works only on arrays
  // forEach() JavaScript ka ek powerful array method hai jo array ke har element ke liye ek specific function ko execute karta hai. Yeh method array ke har element ko ek baar visit karta hai aur uske liye provided callback function ko call karta hai.
 
@@ -156,7 +156,146 @@
     // forEach() simple aur convenient hota hai jab aapko array ke har element ke upar koi operation perform karna ho bina result ko return kiye.
     // forEach() mainly use hota hai jab aapko bas array ko traverse karna ho ya operations perform karne ho, aur array ka output modify nahi karna ho.
 
-    
+//***************************************************
+//***** filter()---------------
+    // filter() array ke har element pe ek condition check karta hai aur jo elements condition satisfy karte hain, unhe return karta hai. Is method ka result ek new array hota hai jo sirf un elements se bana hota hai jo condition ko meet karte hain.
+
+    // let filteredArray = array.filter(function(element, index, array) {
+    //     // return condition (true/false)
+    // });
+
+    // element: current element jo process ho raha hai.
+    // index (optional): us element ka index.
+    // array (optional): pura array jisme se element aaya hai.
+    //return: true agar element ko filter karna hai, false agar nahi karna.
+
+    // Example 1: Filtering even numbers
+
+    const numbers = [1, 2, 3, 4, 5, 6];
+
+    const evenNumbers = numbers.filter(function(number) {
+        return number % 2 === 0;
+    });
+
+    console.log(evenNumbers); // Output: [2, 4, 6]
+
+    // Example 2: Filtering strings with more than 3 characters
+
+    // const words = ['sun', 'moon', 'earth', 'star'];
+
+    // const longWords = words.filter(function(word) {
+    //     return word.length > 3;
+    // });
+
+    // console.log(longWords); // Output: ['moon', 'earth', 'star']
+
+//**************************************************************
+    //**** map()---------
+    // map() array ke har element pe ek function apply karta hai aur har element ka modified version return karta hai. Iska result ek new array hota hai jisme original array ke har element ka transformed version hota hai.
+
+    // Syntax:
+    // javascript
+    // let newArray = array.map(function(element, index, array) {
+    //     // return new value
+    // });
+
+    // element: current element jo process ho raha hai.
+    // index (optional): us element ka index.
+    // array (optional): pura array jisme se element aaya hai.
+    // return: naya value jo array ke corresponding index pe aayega.
+
+    // Example 1: Squaring each number
+    // const numbers = [1, 2, 3, 4];
+
+    // const squaredNumbers = numbers.map(function(number) {
+    //     return number * number;
+    // });
+
+    // console.log(squaredNumbers); // Output: [1, 4, 9, 16]
+
+    // Example 2: Uppercasing strings
+    // const words = ['apple', 'banana', 'cherry'];
+
+    // const upperCaseWords = words.map(function(word) {
+    //     return word.toUpperCase();
+    // });
+
+    // console.log(upperCaseWords); // Output: ['APPLE', 'BANANA', 'CHERRY']
+
+    //*******************************************************
+    //**** reduce()-------
+    // reduce() array ke elements ko ek single value me reduce karta hai. Yeh method accumulator aur current element ko use karke array ke har element pe operation perform karta hai aur ek final result return karta hai.
+
+    // let result = array.reduce(function(accumulator, element, index, array) {
+    // // return new accumulator value
+    // }, initialValue);
+
+    //> accumulator: yeh wo value hai jo har iteration ke baad update hoti hai (final result ka part).
+    //> element: current element jo process ho raha hai.
+    //> index (optional): us element ka index.
+    //> array (optional): pura array.
+    //> initialValue: accumulator ki starting value (optional but recommended).
+
+    // Example 1: Sum of all numbers
+
+    const numbersreduce = [1, 2, 3, 4];
+
+    const sum = numbersreduce.reduce(function(accumulator, number) {
+        return accumulator + number;
+    }, 0);
+
+    console.log(sum); // Output: 10
+
+    // Example 2: Finding maximum value
+
+    const numbersreduceTwo = [3, 5, 2, 8, 1];
+
+    const max = numbersreduceTwo.reduce(function(accumulator, number) {
+        return number > accumulator ? number : accumulator;
+    }, numbersreduceTwo[0]);
+
+    console.log(max); // Output: 8
+
+    //***** Use Cases and Differences: ---------
+
+    // 1. forEach():--
+    // Use Case:--
+    // Jab aapko array ke har element pe ek operation perform karna ho bina koi new array banaye. Iska typical use logging, modifying external variables ya DOM elements ko update karna hota hai.
+
+    // Important Points:--
+    // Return value: Kuch return nahi karta.
+    // Side Effects: Mostly side effects create karne ke liye use hota hai (jaise console log karna ya DOM update karna).
+    // Not Chainable: Isko aap chaining ke liye use nahi kar sakte kyunki ye kuch return nahi karta.
+
+    // 2. map():--
+    // Use Case:
+    // Jab aapko array ke har element ko modify karke naya array banana ho. Jaise kisi array ke sab elements ko double karna ya koi nayi property add karna.
+
+    // Important Points:--
+    // Return value: New array return karta hai jo modified values contain karta hai.
+    // Immutable: Original array ko modify nahi karta, balki ek new array banata hai.
+    // Chainable: Isko aap chaining ke liye use kar sakte ho kyunki yeh new array return karta hai.
+
+    // 3. filter():--
+    // Use Case:
+    // Jab aapko array se kuch specific elements ko filter karke naya array banane ki zarurat ho. Jaise aapko even numbers ya certain conditions ko satisfy karne wale elements chahiye ho.
+
+    // Important Points:--
+    // Return value: Naya array return karta hai jo sirf un elements ko contain karta hai jo condition satisfy karte hain.
+    // Immutable: Original array ko modify nahi karta, ek new array return karta hai.
+    // Chainable: Aap isko chaining ke liye use kar sakte ho.
+
+    // 4. reduce():--
+    // Use Case:
+    // Jab aapko array ke elements ko combine ya aggregate karke ek single value nikalni ho. Isko aap total sum ya product, ya array ke elements ko ek string mein convert karne ke liye use kar sakte ho.
+
+    // Important Points:--
+    // Return value: Single value return karta hai jo array ke saare elements ko aggregate karta hai.
+    // Initial Value: Isme aap initial value provide kar sakte ho jo aggregation ka base hota hai.
+    // Chainable: Chaining ke liye iska use nahi hota, kyunki ye ek single value return karta hai, array nahi.
+
+
+
     </script>
 </body>
 </html>
