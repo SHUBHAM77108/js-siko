@@ -13,9 +13,7 @@
     // Write a function named printEachElement that takes an array and uses forEach to log each element of the array to the console.
 
     const printEachElement = (arr)=> {
-        arr.forEach((element)=> {
-            console.log(`${element}`);
-        });
+        arr.forEach((element)=> console.log(`${element}`));
     }
 
     printEachElement([1,2,3,4]);
@@ -25,9 +23,7 @@
 
     const sumArray = (arr)=> {
         let result = 0;
-        arr.forEach((e,i)=>{
-            result += e;
-        });
+        arr.forEach((e,i)=> result += e);
         return `Sum of all array element: ${result}`;
     };
 
@@ -38,9 +34,7 @@
 
     const convertToUppercase = (arr)=> {
         let newArry = [];
-        arr.forEach((element,index,arr)=> {
-            newArry.push(element.toUpperCase());
-        })
+        arr.forEach((element,index,arr)=> newArry.push(element.toUpperCase()));
         console.log(newArry);
     }
 
@@ -51,9 +45,8 @@
 
     const addPrefix = (arr, prefix)=> {
         let result = [];
-        arr.forEach((element)=> {
-            result.push(prefix + element);
-        });
+        arr.forEach((element)=> result.push(prefix + element)
+        );
         console.log(result);
     }
 
@@ -100,13 +93,128 @@
 
     const calculateTotalPrice = (arrayOfProduct)=> {
         let totalPrice = 0;
-        arrayOfProduct.forEach((element)=> {
-            totalPrice += element.price
-        });
+        arrayOfProduct.forEach((element)=> totalPrice += element.price
+        );
         return `Total price of all product: ${totalPrice}`;
     }
 
     console.log(calculateTotalPrice(products)); // Should return 100
+
+
+//**** Practice Questions: filter
+
+    //1> Question:
+    // Write a function named filterEvenNumbers that takes an array of numbers and returns a new array containing only the even numbers using the filter method.
+
+    const filterEvenNumbers = (arr) => {
+        return arr.filter((element)=> element % 2 === 0
+        );
+    }
+
+    console.log(filterEvenNumbers([1, 2, 3, 4, 5, 6])); // Should return [2, 4, 6]
+
+    //2> Question:
+    // Write a function named filterShortWords that takes an array of words and returns a new array containing only the words that are shorter than 5 characters using the filter method.
+
+
+    function filterShortWordsusingFilter(arr){
+        return arr.filter((word)=> word.length < 5
+    );
+    };
+
+    
+    console.log(filterShortWordsusingFilter(['apple', 'dog', 'cat', 'elephant'])); // Should return ['dog', 'cat']
+
+
+    //3> Question:
+    // Write a function named filterByPrice that takes an array of objects representing products (each object has a name and price property) and a number maxPrice. Return a new array containing only the products that have a price lower than maxPrice.
+
+    const productsfilter = [{name: 'apple', price: 50}, {name: 'banana', price: 30}, {name: 'cherry', price: 20}];
+
+    const filterByPrice = (arrObject, maxPrice)=> {
+        return arrObject.filter((object)=> object.price < maxPrice
+        )
+    }
+    console.log(filterByPrice(productsfilter, 40));
+
+    //4> Question:
+    // Write a function named filterWordsContainingLetter that takes an array of words and a letter as arguments. Use the filter method to return a new array containing only the words that contain the given letter.
+
+    const filterWordsContainingLetterInFilter = (arr) => {
+        return arr.filter((word,index)=> {
+            for(let i = 0; i < word.length; i++) {
+                if (word.charAt(i) === 'a') {
+                    return true;
+                }
+            }
+            return false
+        });
+    };
+
+
+    console.log(filterWordsContainingLetterInFilter(['apple', 'banana', 'date', 'cherry'], 'a')); // Should return ['apple', 'banana', 'date']
+
+    // 5 Question:
+    // Write a function named filterPassedStudents that takes an array of objects representing students (each object has a name and score property) and returns a new array containing only the students who passed (score 50 or above).
+
+    function filterPassedStudents (arr) {
+        return arr.filter((student)=> student.score > 50)
+    }
+
+    const students = [{name: 'Alice', score: 45}, {name: 'Bob', score: 55}, {name: 'Charlie', score: 60}];
+    console.log(filterPassedStudents(students)); // Should return [{name: 'Bob', score: 55}, {name: 'Charlie', score: 60}]
+
+
+//**** Practice Questions: map
+
+    // 1> Question
+    // Write a function named doubleNumbers that takes an array of numbers and returns a new array with each number doubled using the map method.
+
+    function doubleNumbers (num) {
+        return num.map((element)=> element * 2);
+    }
+    console.log(doubleNumbers([1, 2, 3, 4]));
+
+    //2> Question:
+    // Write a function named capitalizeWords that takes an array of strings and returns a new array with each word capitalized using the map method.
+
+    function capitalizeWords(arrWord) {
+        return arrWord.map((element)=> element.toUpperCase());
+    }
+
+    console.log(capitalizeWords(['apple', 'banana', 'cherry'])); // Should return ['APPLE', 'BANANA', 'CHERRY']
+
+    //3> Question:
+    // Write a function named getFirstLetters that takes an array of strings and returns a new array containing the first letter of each string using the map method.
+
+    const getFirstLetters = (arr)=> {
+        return arr.map((element)=> {
+            return element.charAt(0);
+        })
+    }
+
+    console.log(getFirstLetters(['apple', 'banana', 'cherry'])); // Should return ['a', 'b', 'c']
+
+    //4> Question:
+    // Write a function named appendIndex that takes an array of strings and returns a new array where each string is appended with its index in the original array using the map method.
+
+    const appendIndex = (arr)=> {
+        return arr.map((element, index)=> element + index)
+    }
+
+    console.log(appendIndex(['apple', 'banana', 'cherry'])); // Should return ['apple0', 'banana1', 'cherry2']
+
+    //5> Question:
+    // Write a function named reverseWords that takes an array of strings and returns a new array where each string is reversed using the map method.
+
+    function reverseWords(arr) {
+        return arr.map((element)=> {
+            return element.split().reverse();
+        })
+    }
+
+    console.log(reverseWords(['hello', 'world'])); // Should return ['olleh', 'dlrow']
+
 
 
 </script>
