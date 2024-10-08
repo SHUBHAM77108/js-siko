@@ -219,8 +219,91 @@
         });
     }
 
-console.log(reverseWords(['hello', 'world'])); // Should return ['olleh', 'dlrow']
+    console.log(reverseWords(['hello', 'world'])); // Should return ['olleh', 'dlrow']
 
+//**** Practice Questions: reduce
+
+    //1> Question:
+    //Write a function named sumNumbers that takes an array of numbers and uses the reduce method to return the sum of all the numbers in the array.
+
+    function sumNumbers(arr){
+        return arr.reduce(function (acc, currnetValue) {
+            return acc + currnetValue;
+        },0);
+    }
+    
+    console.log(sumNumbers([1,2,3,4]));// Should return 10
+
+    //2> Question: 
+    //Write a function named multiplyNumbers that takes an array of numbers and uses the reduce method to return the product of all the numbers in the array.
+
+    const multiplyNumbers = function (arr) {
+        return arr.reduce( function (acc, currnetValue) {
+            return acc * currnetValue;
+        },1);
+    }
+
+    console.log(multiplyNumbers([1, 2, 3, 4])); // Should return 24
+
+    //3> Question:
+    //Write a function named concatenateStrings that takes an array of strings and uses the reduce method to return a single string that is the result of concatenating all the strings in the array.
+
+    const concatenateStrings = (arr)=> {
+        return arr.reduce((acc, element)=> acc += element);
+    }
+
+    console.log(concatenateStrings(['Hello', ' ', 'World'])); // Should return 'Hello World'
+
+    //4> Question:
+    //Write a function named findMax that takes an array of numbers and uses the reduce method to return the largest number in the array.
+
+    const findMax = (arr)=> {
+        return arr.reduce((acc, currentElement)=> {
+            if (acc < currentElement) {
+                acc = currentElement;
+            }
+            return acc;
+        }, 1);
+    };
+
+    console.log(findMax([1, 3, 9, 2, 3, 1])); // Should return 9
+
+    //5> Question:
+    //Write a function named countOccurrences that takes an array of strings and a target string. Use the reduce method to count how many times the target string appears in the array.
+
+    const countOccurrences = (arr,string)=> {
+        return arr.reduce((acc,element)=> {
+            if (element === string){
+                acc += 1;
+            }
+            return acc;
+        }, 0);
+    }
+
+    console.log(countOccurrences(['apple', 'banana', 'apple', 'cherry'], 'apple')); // Should return 2
+
+    //6> Question:
+    //Write a function named flattenArray that takes a 2D array (an array of arrays) and uses the reduce method to flatten it into a 1D array.
+
+    const flattenArray = (arr) => {
+        return arr.reduce((acc,currentarr)=> acc.concat(currentarr), []);
+    };
+
+    console.log(flattenArray([[1, 2], [3, 4], [5, 6]]));// Should return [1, 2, 3, 4, 5, 6]
+
+    //7> Question:
+    // Write a function named countVotes that takes an array of vote objects (each object has a candidate property) and uses the reduce method to count how many votes each candidate received. Return an object with the candidate names as keys and their vote counts as values.
+
+    const votes = [{candidate: 'A'}, {candidate: 'B'}, {candidate: 'A'}, {candidate: 'B'}, {candidate: 'A'}];
+
+    const countVotes = (votes)=> {
+        return votes.reduce((voteCount,vote)=> {
+            voteCount[vote.candidate] = (voteCount[vote.candidate] || 0) + 1
+            return voteCount;
+        },{});
+    };
+
+    console.log(countVotes(votes)); // Should return { A: 3, B: 2 }
 
 
 </script>
