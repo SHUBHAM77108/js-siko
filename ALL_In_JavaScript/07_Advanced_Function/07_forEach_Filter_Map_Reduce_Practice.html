@@ -297,13 +297,69 @@
     const votes = [{candidate: 'A'}, {candidate: 'B'}, {candidate: 'A'}, {candidate: 'B'}, {candidate: 'A'}];
 
     const countVotes = (votes)=> {
+        let voteCount2 = {};
+        console.log(voteCount2);
         return votes.reduce((voteCount,vote)=> {
-            voteCount[vote.candidate] = (voteCount[vote.candidate] || 0) + 1
-            return voteCount;
+            //short way
+            // accumulator object ke andar ek nayi property ko create kar raha hai aur us property ki value ko set kar raha hai.
+            // voteCount[vote.candidate] = (voteCount[vote.candidate] || 0) + 1;
+            console.log(vote);
+            if (voteCount2[vote.candidate]) {
+                voteCount2[vote.candidate] += 1;  // Increment count if candidate exists
+            } else {
+                voteCount2[vote.candidate] = 1;  // Initialize count to 1 if candidate doesn't exist
+            }
+            return voteCount2;
         },{});
     };
 
     console.log(countVotes(votes)); // Should return { A: 3, B: 2 }
+
+    //8> Question:
+    // Write a function named sumPrice that takes an array of objects representing products (each object has a name and price property) and uses the reduce method to calculate the total price of all the products.
+
+    const sumPrice = (arr)=> {
+        return arr.reduce((accumulator, element)=> {
+            return accumulator += element.price;
+        }, 0);
+    };
+
+    const productsTwo = [{name: 'apple', price: 50}, {name: 'banana', price: 30}, {name: 'cherry', price: 20}];
+    console.log(sumPrice(productsTwo)); // Should return 100
+
+    //9 Question:
+    // Write a function named groupByFirstLetter that takes an array of strings and uses the reduce method to group the strings by their first letter. Return an object where the keys are the first letters and the values are arrays of strings that start with that letter.
+
+    const groupByFirstLetter = (arr)=> {
+        arr.sort();
+        return arr.reduce((acc, element)=> {
+            let property = element.charAt(0);
+
+            if (!acc[property]) {
+                acc[property] = [];
+            }
+
+            acc[property].push(element);
+
+            return acc
+        }, {});
+    };
+
+    console.log(groupByFirstLetter(['apple', 'banana', 'cherry', 'apricot', 'blueberry'])); // Should return { a: ['apple', 'apricot'], b: ['banana', 'blueberry'], c: ['cherry'] }
+
+    //10 Question:
+    // Write a function named findMostFrequent that takes an array of numbers and uses the reduce method to find the most frequent number in the array.
+
+    const findMostFrequent = (arr)=> {
+        // let count = 0;
+        return arr.reduce((acc, element)=> {
+            // acc[property] = 
+            return acc;
+        }, {});
+    }
+
+    console.log(findMostFrequent([1, 2, 2, 3, 3, 3, 4])); // Should return 3)
+
 
 
 </script>
