@@ -351,14 +351,28 @@
     // Write a function named findMostFrequent that takes an array of numbers and uses the reduce method to find the most frequent number in the array.
 
     const findMostFrequent = (arr)=> {
-        // let count = 0;
-        return arr.reduce((acc, element)=> {
-            // acc[property] = 
+        const frequencyMap = arr.reduce((acc, element)=> {
+            //Check if element already exists in acc, if yes increment, else initialize with 1
+            acc[element] = (acc[element] || 0) + 1;
             return acc;
         }, {});
+
+        //setp 2: Find the most frequent number
+        let mostFrequentNum = null;
+        let maxCount = 0;
+
+        //Loop through frequencyMap to find the element with the highest count
+        for (let num in frequencyMap) {
+            if (frequencyMap[num] > maxCount) {
+                maxCount = frequencyMap[num];
+                mostFrequentNum = Number(num);// convert key back to a number
+            }
+        }
+
+        return mostFrequentNum;
     }
 
-    console.log(findMostFrequent([1, 2, 2, 3, 3, 3, 4])); // Should return 3)
+    console.log(findMostFrequent([1, 1, 2, 2, 3, 3, 3, 4])); // Should return 3)
 
 
 
