@@ -381,6 +381,48 @@
 
     console.log(findMostFrequent([1, 1, 2, 2, 3, 3, 3, 4])); // Should return 3)
 
+    // Question 1: Combining map, filter, and reduce
+    // You have an array of products with name, price, and category. Write a function getTotalPriceOfCategory that does the following:
+
+    // Filter the products by a specific category.
+    // Map the filtered products to only their prices.
+    // Reduce the resulting array of prices to get the total sum of the prices.
+    // Finally, log the total using forEach.
+
+    const products3 = [
+    { name: 'Apple', price: 100, category: 'Fruit' },
+    { name: 'Banana', price: 60, category: 'Fruit' },
+    { name: 'Carrot', price: 40, category: 'Vegetable' },
+    { name: 'Tomato', price: 50, category: 'Vegetable' },
+    { name: 'Mango', price: 120, category: 'Fruit' }
+];
+
+// function getTotalPriceOfCategory(products, category) {
+//     // Step 1: Filter the products by category
+//     const filteredProducts = products.filter(product => product.category === category);
+    
+//     // Step 2: Map the filtered products to get their prices
+//     const prices = filteredProducts.map(product => product.price);
+    
+//     // Step 3: Reduce the prices array to get the total price
+//     const totalPrice = prices.reduce((acc, price) => acc + price, 0);
+    
+//     // Step 4: Use forEach to log the total price (even though forEach isn't really necessary for logging one value)
+//     [totalPrice].forEach(total => console.log(`Total price for category "${category}" is: ${total}`));
+// }
+
+
+// Should log the total price of all 'Fruit' category products.
+
+// same Question using chain the method 
+
+function getTotalPriceOfCategory(products, category) {
+    [products.filter(product => product.category === category).map(product => product.price).reduce((acc, price) => acc + price, 0)].forEach(total => console.log(`Total price for category "${category}" is: ${total}`))
+}
+
+getTotalPriceOfCategory(products3, 'Fruit');
+
+// The reason the filter(), map(), and reduce() methods are wrapped inside an array is to make the final result iterable so that we can apply forEach() at the end. Normally, reduce() returns a single value (not an array), so it can't be used directly with forEach().
 
 </script>
 </body>
