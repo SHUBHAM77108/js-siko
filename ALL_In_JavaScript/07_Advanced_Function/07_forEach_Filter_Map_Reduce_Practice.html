@@ -424,6 +424,128 @@ getTotalPriceOfCategory(products3, 'Fruit');
 
 // The reason the filter(), map(), and reduce() methods are wrapped inside an array is to make the final result iterable so that we can apply forEach() at the end. Normally, reduce() returns a single value (not an array), so it can't be used directly with forEach().
 
+
+// Question 2: Filtering and Summing Ages
+// You have an array of people with name and age. Write a function getTotalAgeAbove that:
+
+// Filter the people who are older than a given age.
+// Map to get their ages.
+// Reduce to find the total of their ages.
+// Use forEach to log each person's name who was included in the sum.
+
+
+const people = [
+    { name: 'John', age: 28 },
+    { name: 'Jane', age: 34 },
+    { name: 'Tom', age: 18 },
+    { name: 'Anna', age: 25 },
+    { name: 'Mike', age: 40 }
+];
+
+function getTotalAgeAbove(people, ageLimit) {
+    const filteredPeple = people.filter(person => person.age > ageLimit);
+
+    const ages = filteredPeple.map(people => people.age);
+
+    const totalAge = ages.reduce((sum, age)=> sum + age, 0);
+
+    filteredPeple.forEach(person=> console.log(`Name: ${person.name}, Age: ${person.age}`));
+
+    console.log(`Total age of people older than ${ageLimit}: ${totalAge}`);
+}
+
+getTotalAgeAbove(people, 30);
+// Should log the total age of people older than 30 and their names.
+
+
+// Question 3: Counting Words of a Certain Length
+// You have an array of strings representing different words. Write a function countWordsOfLength that:
+
+// Filter the words that have a specific length.
+// Map those words into their lengths (just as a practice step).
+// Reduce to count how many words have that length.
+// Use forEach to log each word that has the given length.
+
+const words = ['apple', 'banana', 'pear', 'orange', 'grape', 'watermelon'];
+
+function countWordsOfLength (word, wordLength) {
+    const filterWord = word.filter(word => word.length === wordLength);
+
+    const countWord = filterWord.reduce((count, word) => count += 1, 0);
+
+    filterWord.forEach(word => console.log(`Word: ${word}, Length: ${word.length}`));
+    console.log(`Total word with length ${wordLength}: ${countWord}`)
+}
+
+countWordsOfLength(words, 5);
+// Should log the number of words with length 5 and print those words.
+
+
+// Question 4: Filtering and Modifying an Array of Objects
+// You have an array of car objects with make, model, and year. Write a function getModifiedCars that:
+
+// Filter the cars whose year is before 2020.
+// Map the cars to update their year to 2024.
+// Reduce the cars to get a count of how many cars were modified.
+// Use forEach to log each modified car.
+
+const cars = [
+    { make: 'Toyota', model: 'Corolla', year: 2018 },
+    { make: 'Honda', model: 'Civic', year: 2020 },
+    { make: 'Ford', model: 'Focus', year: 2019 },
+    { make: 'Honda', model: 'Focus', year: 2019 },
+    { make: 'Tesla', model: 'Model 3', year: 2021 }
+];
+
+const getModifiedCars = (cars) => {
+    const filterCars = cars.filter(car => car.year < 2020);
+    
+    const modifiedCars = filterCars.map(car => {
+        car.year = 2024
+        return car;
+    });
+
+    const countModifiedCars = modifiedCars.reduce((count)=> count + 1, 0);
+
+    modifiedCars.forEach(car => console.log(`Make: ${car.make}, Model: ${car.model}, Year: ${car.year}`));
+    console.log(`Total modified cars ${countModifiedCars}`);
+}
+
+getModifiedCars(cars);
+// Should log the modified cars and their new years, and return the count of modified cars.
+
+// Question 5: Filtering, Mapping, and Calculating Total Salary
+// You have an array of employees with name, salary, and department. Write a function getTotalSalaryByDepartment that:
+
+// Filter the employees based on the department (e.g., 'Engineering').
+// Map the filtered employees to only their salaries.
+// Reduce the salaries to get the total salary of that department.
+// Use forEach to log each employee in that department.
+
+const employees = [
+    { name: 'Alice', salary: 50000, department: 'Engineering' },
+    { name: 'Bob', salary: 60000, department: 'Sales' },
+    { name: 'Charlie', salary: 70000, department: 'Engineering' },
+    { name: 'David', salary: 55000, department: 'HR' },
+    { name: 'Eve', salary: 65000, department: 'Engineering' }
+];
+
+function getTotalSalaryByDepartment(employees, department) {
+    const filterEmployess = employees.filter(employee => employee.department === department);
+
+    const filterEmployessSalary = filterEmployess.map(employeeSalary => employeeSalary.salary);
+
+    const totalSalary = filterEmployessSalary.reduce((total, salary)=> total += salary, 0);
+
+    filterEmployess.forEach(employee => console.log(`Name: ${employee.name}, Salary: ${employee.salary}`));
+
+    console.log(`Total salary for ${department} department: ${totalSalary}`)
+}
+
+getTotalSalaryByDepartment(employees, 'Engineering');
+// Should log the total salary for the 'Engineering' department and print the names.
+
+
 </script>
 </body>
 </html>
