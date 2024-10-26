@@ -7,8 +7,6 @@ console.log(cart.quantity)
 
 let cartSummaryHTML = '';
 
-
-
 cart.forEach((cartItem)=> {
     const productId = cartItem.productId;
 

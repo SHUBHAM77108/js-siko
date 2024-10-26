@@ -61,11 +61,15 @@ document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
 const addedMessageTimeouts = {};
 
-function UpdateCartQuantity() {
-    let cartQuantity = 0;
+export let cartQuantity = JSON.parse(localStorage.getItem('cartQuantity')) || 0;
 
+function cartQuantitySaveToStorage() {
+    localStorage.setItem('cartQuantity', JSON.stringify(cartQuantity));
+}
+
+function UpdateCartQuantity() {
     cart.forEach((cartItem) => {
-        // if (cart.quantity)
+        cartQuantitySaveToStorage();
 
         cartQuantity += cartItem.quantity;
     });
