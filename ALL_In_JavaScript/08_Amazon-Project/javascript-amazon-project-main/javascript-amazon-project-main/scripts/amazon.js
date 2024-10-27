@@ -1,11 +1,14 @@
-import {cart, addToCart} from '../data/cart.js';
-import {products} from '../data/products.js';
-import { formatCurrency } from './utils/money.js';
+import { cart, addToCart } from "../data/cart.js";
+import { products } from "../data/products.js";
+import { formatCurrency } from "./utils/money.js";
 
-let productsHTML = '';
+let productsHTML = "";
+// cart.forEach((item) => {
+//   console.log(item.quantity);
+// });
 
-products.forEach((product)=> {
-    productsHTML += `
+products.forEach((product) => {
+  productsHTML += `
         <div class="product-container">
             <div class="product-image-container">
                 <img class="product-image"
@@ -50,63 +53,64 @@ products.forEach((product)=> {
                 Added
             </div>
 
-            <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id="${product.id}">
+            <button class="add-to-cart-button button-primary js-add-to-cart" data-product-id="${
+              product.id
+            }">
                 Add to Cart
             </button>
         </div>
     `;
 });
 
-document.querySelector('.js-products-grid').innerHTML = productsHTML;
+document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
 const addedMessageTimeouts = {};
 
-export let cartQuantity = JSON.parse(localStorage.getItem('cartQuantity')) || 0;
+export let cartQuantity = JSON.parse(localStorage.getItem("cartQuantity")) || 0;
 
 function cartQuantitySaveToStorage() {
-    localStorage.setItem('cartQuantity', JSON.stringify(cartQuantity));
+  localStorage.setItem("cartQuantity", JSON.stringify(cartQuantity));
 }
 
 function UpdateCartQuantity() {
-    cart.forEach((cartItem) => {
-        cartQuantitySaveToStorage();
+  cart.forEach((cartItem) => {
+    cartQuantitySaveToStorage();
+    console.log(cartItem.quantity);
+    cartQuantity += cartItem.quantity;
+  });
 
-        cartQuantity += cartItem.quantity;
-    });
-
-    document.querySelector('.js-cart-quantity').innerHTML = cartQuantity;
+  document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
 }
 
-console.log(cart)
+function updateAddToCartMsg(productId) {
+  const addedMessage = document.querySelector(`.js-added-to-cart-${productId}`);
 
-function updateAddToCartMsg(productId){
-    const addedMessage = document.querySelector(`.js-added-to-cart-${productId}`);
+  addedMessage.classList.add("added-to-cart-visible");
 
-        addedMessage.classList.add('added-to-cart-visible');
+  const previousTimeoutId = addedMessageTimeouts[productId];
 
-        const previousTimeoutId = addedMessageTimeouts[productId];
+  if (previousTimeoutId) {
+    clearTimeout(previousTimeoutId);
+  }
 
-        if (previousTimeoutId) {
-        clearTimeout(previousTimeoutId);
-        }
+  const timeoutId = setTimeout(() => {
+    addedMessage.classList.remove("added-to-cart-visible");
+  }, 2000);
 
-        const timeoutId = setTimeout(() => {
-            addedMessage.classList.remove('added-to-cart-visible');
-        }, 2000);
-
-        addedMessageTimeouts[productId] = timeoutId;
-        // console.log(addedMessageTimeouts);
+  addedMessageTimeouts[productId] = timeoutId;
+  // console.log(addedMessageTimeouts);
 }
 
-document.querySelectorAll('.js-add-to-cart').forEach((button)=> {
-    button.addEventListener('click', ()=> {
-        const productId = button.dataset.productId;
+document.querySelectorAll(".js-add-to-cart").forEach((button) => {
+  button.addEventListener("click", () => {
+    const productId = button.dataset.productId;
 
-        addToCart(productId);
+    addToCart(productId);
 
-        UpdateCartQuantity();
+    UpdateCartQuantity();
 
-        updateAddToCartMsg(productId);
-
-    });
+    updateAddToCartMsg(productId);
+  });
 });
+
+UpdateCartQuantity();
