@@ -66,17 +66,11 @@ document.querySelector(".js-products-grid").innerHTML = productsHTML;
 
 const addedMessageTimeouts = {};
 
-export let cartQuantity = JSON.parse(localStorage.getItem("cartQuantity")) || 0;
-
-function cartQuantitySaveToStorage() {
-  localStorage.setItem("cartQuantity", JSON.stringify(cartQuantity));
-}
-
 function UpdateCartQuantity() {
+  let cartQuantity = 0;
   cart.forEach((cartItem) => {
-    cartQuantitySaveToStorage();
-    console.log(cartItem.quantity);
     cartQuantity += cartItem.quantity;
+    console.log(typeof cartQuantity);
   });
 
   document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
@@ -98,7 +92,6 @@ function updateAddToCartMsg(productId) {
   }, 2000);
 
   addedMessageTimeouts[productId] = timeoutId;
-  // console.log(addedMessageTimeouts);
 }
 
 document.querySelectorAll(".js-add-to-cart").forEach((button) => {
