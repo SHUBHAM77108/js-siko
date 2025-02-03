@@ -38,11 +38,11 @@ cart.forEach((cartItem) => {
             </div>
             <div class="product-quantity">
                 <span>
-                Quantity: <span class="quantity-label">${
+                Quantity: <span class="quantity-label js-product-quantity">${
                   cartItem.quantity
                 }</span>
                 </span>
-                <span class="update-quantity-link link-primary">
+                <span class="update-quantity-link js-update-quantity link-primary">
                 Update
                 </span>
                 <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${
@@ -128,3 +128,19 @@ function updateCartQuantity() {
   ).innerHTML = `${cartQuantity} items`;
 }
 updateCartQuantity();
+
+document
+  .querySelectorAll(".js-update-quantity")
+  .forEach((UpdateCartQuantityAndSave) => {
+    UpdateCartQuantityAndSave.addEventListener("click", () => {
+      let input = document.createElement("input");
+      input.setAttribute("type", "text");
+      input.setAttribute("value", "Enter quantity");
+      UpdateCartQuantityAndSave.innerHTML = "save";
+      document.querySelectorAll(".js-product-quantity").innerHTML = input;
+    });
+  });
+
+// document
+//   .querySelectorAll(".js-update-quantity")
+//   .addEventListener("click", () => {});
