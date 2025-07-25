@@ -1,0 +1,19 @@
+/* body {
+  text-align: center;
+}
+
+div {
+  height: 200px;
+  width: 400px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+} */
+
+h1 {
+  height: auto;
+  width: auto;
+  display: flex;
+  inline-size: 10vh;
+}
