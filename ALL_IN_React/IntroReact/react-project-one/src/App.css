@@ -1,0 +1,9 @@
+p {
+  font-size: 1.5rem;
+  color: brown;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
