@@ -11,18 +11,25 @@ body {
   width: 100%;
 }
 
-.parent {
-  height: 100vh;
+.grandParent {
+  min-height: 100vh;
   width: 100%;
   background-color: #111;
-  padding: 30px;
+  padding: 60px;
   display: flex;
+  justify-content: center;
+}
+
+.parent {
+  width: 100%; /* ⭐ IMPORTANT */
+  /* max-width: 1200px; ⭐ Centered layout */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 30px;
 }
 
 .card {
   height: 350px;
-  width: 300px;
   background-color: #fff;
   border-radius: 30px;
   padding: 30px;
@@ -38,12 +45,21 @@ body {
   margin-bottom: 30px;
 }
 
-.top img {
-  height: 50px;
+.logo-box {
   width: 50px;
+  height: 50px;
   border-radius: 50%;
   border: 1px solid #dadada;
-  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.logo-box img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
 }
 
 .top button {
@@ -56,6 +72,14 @@ body {
   gap: 3px;
   background-color: transparent;
   color: #b1b1b1;
+}
+
+.top button:hover {
+  color: #7d7d7d;
+  border: 1.3px solid #7d7b7b;
+  transition: all 0.5s ease-in;
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 .center h3 {
@@ -102,6 +126,15 @@ body {
   border: none;
   border-radius: 5px;
   font-weight: 600;
+}
+
+.bottom button:hover {
+  border: 1px solid black;
+  color: black;
+  background-color: #fff;
+  transition: all 0.5s ease-in;
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 .bottom h3 {
