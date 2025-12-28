@@ -52,7 +52,7 @@ body {
   padding: 0px 30px 30px 30px;
 }
 
-.card .center img {
+.card .center .userImg {
   width: 100px;
   border-radius: 50%;
   padding: 3px;
@@ -74,19 +74,28 @@ body {
   margin-bottom: 10px;
 }
 
-.card .center span {
+.card .center-work {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 15px;
+}
+.card .center-work .icon {
+  width: 15px;
+}
+.card .center-work span {
   font-size: 0.8rem;
   font-weight: 500;
-  margin-bottom: 10px;
 }
 
 .card .center .skills {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 18px;
 }
 
-.card .center .skills button {
+.card .center .skills .skills-btn {
   background-color: #fff;
   padding: 5px 12px;
   border-radius: 15px;
