@@ -10,9 +10,9 @@ import Parent from "./Components/UseEffect/Parent";
 function App() {
   return (
     <div>
-      <Parent />
-
-      {/* this is UseEffect  */}
+      {/* hi */}
+      {/* <Parent /> */}
+      this is UseEffect
       {/* <MultiEffectComponents /> */}
       {/* <ResizeComponents /> */}
       {/* <DataFetcher /> */}

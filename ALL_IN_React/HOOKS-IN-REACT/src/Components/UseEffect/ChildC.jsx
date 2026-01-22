@@ -1,10 +1,19 @@
 import React, { useContext } from "react";
-import { userContext } from "./Parent";
+import { ThemeContext, userContext } from "./Parent";
 
 const ChildC = () => {
-  const user = useContext(userContext);
+  // const user = useContext(userContext);
+  const { theme, setTheme } = useContext(ThemeContext);
+  function handleClick() {
+    if (theme === "light") setTheme("dark");
+    else setTheme("light");
+  }
 
-  return <div>Data: {user.name}</div>;
+  return (
+    <div>
+      <button onClick={handleClick}>change Theme</button>
+    </div>
+  );
 };
 
 export default ChildC;
