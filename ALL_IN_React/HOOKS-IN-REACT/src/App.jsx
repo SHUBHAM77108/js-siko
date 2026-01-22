@@ -5,10 +5,14 @@ import MultiEffectComponents from "../../HOOKS-IN-REACT/src/Components/UseContex
 import ResizeComponents from "../../HOOKS-IN-REACT/src/Components/UseContext/ResizeComponents";
 import TimerComponents from "../../HOOKS-IN-REACT/src/Components/UseContext/TimerComponents";
 import UseEffect from "../../HOOKS-IN-REACT/src/Components/UseContext/UseEffect";
+import Parent from "./Components/UseEffect/Parent";
 
 function App() {
   return (
     <div>
+      <Parent />
+
+      {/* this is UseEffect  */}
       {/* <MultiEffectComponents /> */}
       {/* <ResizeComponents /> */}
       {/* <DataFetcher /> */}
