@@ -11,8 +11,8 @@ function App() {
   return (
     <div>
       {/* hi */}
-      {/* <Parent /> */}
-      this is UseEffect
+      <Parent />
+      {/* this is UseEffect */}
       {/* <MultiEffectComponents /> */}
       {/* <ResizeComponents /> */}
       {/* <DataFetcher /> */}
