@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ThemeContext, userContext } from "./Parent";
+import { ThemeContext } from "./Parent";
 
 const ChildC = () => {
   // const user = useContext(userContext);
