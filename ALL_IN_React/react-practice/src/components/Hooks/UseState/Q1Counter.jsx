@@ -5,7 +5,8 @@ const Q1Counter = () => {
   return (
     <div>
       <h1>Count: {count}</h1>
-      <button onClick={() => setCount(count + 1)}>Click Me</button>
+      <button onClick={() => setCount((prev) => prev + 1)}>Click Me</button>
+      <button onClick={() => setCount(0)}>Click Me</button>
     </div>
   );
 };

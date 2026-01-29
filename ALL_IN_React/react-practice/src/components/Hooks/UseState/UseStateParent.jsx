@@ -6,6 +6,9 @@ import Q4ShowAndHide from "./Q4ShowAndHide";
 import Q5StatusToggle from "./Q5StatusToggle";
 import Q6ThemeChange from "./Q6ThemeChange";
 import Q7InputBox from "./Q7InputBox";
+import Q8CharacterCounter from "./Q8CharacterCounter";
+import Q11AddItem from "./Q11AddItem";
+import Q12RemoveItem from "./Q12RemoveItem";
 
 const UseStateParent = () => {
   const [count, setCount] = useState(0);
@@ -17,7 +20,10 @@ const UseStateParent = () => {
       {/* <Q4ShowAndHide /> */}
       {/* <Q5StatusToggle /> */}
       {/* <Q6ThemeChange /> */}
-      <Q7InputBox />
+      {/* <Q7InputBox /> */}
+      {/* <Q8CharacterCounter /> */}
+      {/* <Q11AddItem /> */}
+      {/* <Q12RemoveItem /> */}
     </div>
   );
 };
