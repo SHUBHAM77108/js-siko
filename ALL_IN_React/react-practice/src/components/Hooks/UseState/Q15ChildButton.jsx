@@ -1,8 +1,7 @@
 import React from "react";
 
-const Q15ChildButton = (props) => {
-  function chnageInParent() {}
-  return <button>Click Me</button>;
+const Q15ChildButton = ({ onButtonClick }) => {
+  return <button onClick={onButtonClick}>Click Me</button>;
 };
 
 export default Q15ChildButton;

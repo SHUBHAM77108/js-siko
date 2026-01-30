@@ -10,10 +10,13 @@ import Q8CharacterCounter from "./Q8CharacterCounter";
 import Q11AddItem from "./Q11AddItem";
 import Q12RemoveItem from "./Q12RemoveItem";
 import Q13UserProfile from "./Q13UserProfile";
+import Q15ChildButton from "./Q15ChildButton";
 
 const UseStateParent = () => {
-  const [count, setCount] = useState(0);
-
+  const [name, setName] = useState("shubham");
+  function updateState() {
+    setName("Ankita");
+  }
   return (
     <div>
       {/* <Q1Counter /> */}
@@ -26,7 +29,9 @@ const UseStateParent = () => {
       {/* <Q8CharacterCounter /> */}
       {/* <Q11AddItem /> */}
       {/* <Q12RemoveItem /> */}
-      <Q13UserProfile />
+      {/* <Q13UserProfile /> */}
+      Name: {name}
+      <Q15ChildButton onButtonClick={updateState} />
     </div>
   );
 };
