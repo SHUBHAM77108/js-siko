@@ -11,6 +11,7 @@ import Q11AddItem from "./Q11AddItem";
 import Q12RemoveItem from "./Q12RemoveItem";
 import Q13UserProfile from "./Q13UserProfile";
 import Q15ChildButton from "./Q15ChildButton";
+import MiniProject from "./MiniProject/MiniProject";
 
 const UseStateParent = () => {
   const [name, setName] = useState("shubham");
@@ -30,8 +31,9 @@ const UseStateParent = () => {
       {/* <Q11AddItem /> */}
       {/* <Q12RemoveItem /> */}
       {/* <Q13UserProfile /> */}
-      Name: {name}
-      <Q15ChildButton onButtonClick={updateState} />
+      {/* Name: {name} */}
+      {/* <Q15ChildButton onButtonClick={updateState} /> */}
+      <MiniProject />
     </div>
   );
 };
