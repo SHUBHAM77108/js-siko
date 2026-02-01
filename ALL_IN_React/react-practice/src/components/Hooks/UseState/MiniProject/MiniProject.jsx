@@ -20,8 +20,9 @@ const MiniProject = () => {
   ];
 
   return (
-    <div >
-      <ProductCard items={products} />
+    <div>
+      <ProductCard name="Shoes" price={1999} inStock={true} />
+      <ProductCard name="Watch" price={2999} inStock={false} />
     </div>
   );
 };

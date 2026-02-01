@@ -1,17 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 
-const ProductCard = ({ items }) => {
+const ProductCard = ({ name, price, inStock }) => {
+  const [added, setAdded] = useState(false);
+
   return (
-    <ul>
-      {items.map((product, index) => (
-        /* Use ( ) here instead of { } */
-        <li key={index}>
-          <p>{product.name}</p>
-          <p>{product.price}</p>
-          <p>{product.stockStatus}</p>
-        </li>
-      ))}
-    </ul>
+    <div
+      style={{
+        border: "2px solid gray",
+        padding: "16px",
+        width: "250px",
+        marginBottom: "16px",
+      }}
+    >
+      <h3>{name}</h3>
+      <p>Price: ₹{price}</p>
+      <p>Status: {inStock ? "In Stock" : "Out of Stock"}</p>
+
+      {inStock ? (
+        <button onClick={() => setAdded(true)}>
+          {added ? "Added" : "Add to Cart"}
+        </button>
+      ) : (
+        ""
+      )}
+    </div>
   );
 };
 

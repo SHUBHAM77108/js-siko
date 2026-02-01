@@ -34,6 +34,8 @@ const UseStateParent = () => {
       {/* Name: {name} */}
       {/* <Q15ChildButton onButtonClick={updateState} /> */}
       <MiniProject />
+
+      <button>Click me</button>
     </div>
   );
 };
