@@ -20,7 +20,7 @@ const MiniProject = () => {
   ];
 
   return (
-    <div>
+    <div >
       <ProductCard items={products} />
     </div>
   );
